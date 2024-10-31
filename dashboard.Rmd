@@ -14,7 +14,7 @@ library(p8105.datasets)
 data("ny_noaa")
 ```
 
-We will work on observations from `ny_noaa` dataset with `id` "USC00300023", "USC00301152", and "USC00304912" in 2001 without NAs.
+
 ```{r}
 weather_df = 
   ny_noaa %>% 
@@ -29,12 +29,13 @@ weather_df =
     id %in% c("USC00300023", "USC00301152", "USC00304912"))
 ```
 
-Column {data-width="650"}
+Column {data-width=650}
 --------------------------------------------
 
 ### Scatterplots
 
 In this scatterplot, we will look into the relation between tmax and tmin across months.
+
 ```{r}
 scatterplot = 
   weather_df |> 
@@ -55,7 +56,7 @@ scatterplot
 
 ```
 
-Column {data-width="350"}
+Column {data-width=350}
 -----------------------------------------------------------------
 
 ### boxplot
