@@ -4,7 +4,6 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
-    source: embed
 ---
 
 ```{r setup, include=FALSE}
@@ -43,7 +42,7 @@ scatterplot =
     type = "scatter",
     mode = "markers",
     colors = "viridis",
-    text = ~month, alpha = 0.3) |> 
+    text = ~month, alpha = 0.5) |> 
   layout(
     title = "tmax vs tmin across months",
     xaxis = list(title = "tmin"),

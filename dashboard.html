@@ -1,29 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
 
 
 
 <title>Dashboard</title>
 
-<meta property="og:title" content="Dashboard" />
-
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-
-<link rel="icon" href="data:image/x-icon;" type="image/x-icon">
-
-
-<script type="text/javascript">
-window.FlexDashboardComponents = [];
-</script>
-
-<script id="flexdashboard-navbar" type="application/json">
-[{"title":"Source Code","icon":"fa-code","href":"source_embed","align":"right"}]
-</script>
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,16 +29,9 @@ window.FlexDashboardComponents = [];
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/stickytableheaders-0.1.19/jquery.stickytableheaders.min.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
-<link href="site_libs/value-box-accent-static-0.6.2/theme-cosmo-value-box.css" rel="stylesheet" />
-<link href="site_libs/featherlight-1.3.5/featherlight.min.css" rel="stylesheet" />
-<script src="site_libs/featherlight-1.3.5/featherlight.min.js"></script>
-<link href="site_libs/prism-1.4.1/prism.css" rel="stylesheet" />
-<script src="site_libs/prism-1.4.1/prism.js"></script>
-<link href="site_libs/flexdashboard-css-0.6.2/flexdashboard.min.css" rel="stylesheet" />
-<link href="site_libs/flexdashboard-css-0.6.2/theme-cosmo.css" rel="stylesheet" />
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
@@ -58,104 +40,193 @@ window.FlexDashboardComponents = [];
 <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
 <style type="text/css">
-/*
-  CSS for flexdashboard.js' use of Sly(). The sizing/position of this CSS needs to be
-  applied _before_ flexdashboard.js initializes, which is why this CSS has been pulled
-  out from flexdashboard.scss and inlined in the document's head.
-*/
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-.storyboard-nav button {
-  background: transparent;
-  border: 0;
-  opacity: .3;
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
   padding: 0;
-}
-
-.storyboard-nav button:hover,
-.storyboard-nav button:hover {
-  opacity: .5;
-}
-
-.storyboard-nav button:disabled,
-.storyboard-nav button:disabled {
-  opacity: .1;
-}
-
-.storyboard-nav .sbnext,
-.storyboard-nav .sbprev {
-  float: left;
-  width: 2%;
-  height: 120px;
-}
-
-.storyboard-nav .sbprev {
-  text-align: left;
-  width: 2%;
-}
-
-.storyboard-nav .sbnext {
-  float: right;
-  text-align: right;
-  margin-right: 8px;
-}
-
-.storyboard-nav .sbframelist {
-  margin: 0 auto;
-  width: 94%;
-  height: 120px;
-  overflow: hidden;
-  text-shadow: none;
-  margin-bottom: 8px;
-}
-
-.storyboard-nav .sbframelist ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.storyboard-nav .sbframelist ul li {
-  float: left;
-  width: 270px;
-  height: 100%;
-  padding: 10px 10px 10px 10px;
-  margin-right: 8px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.storyboard-nav .sbframelist ul li:last-child {
-  margin-right: 0px;
-}
-
-.sbframe-commentary {
-  width: 300px;
-}
-
-.sbframe-commentary ul {
-  padding-left: 22px;
-}
-
-.sbframe.active {
-  display: flex;
-}
-
-.sbframe:not(.active) {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-html, body {
-  height: 100%;
-}
-
-#dashboard-container {
-  height: 100%;
-}
 }
 </style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
 
 
 
@@ -163,1895 +234,179 @@ html, body {
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container-fluid">
-<div class="navbar-header">
 
-<span class="navbar-logo pull-left">
-  
-</span>
-<span class="navbar-brand">
-  Dashboard
-  <span class="navbar-author">
-        </span>
-</span>
+<div class="container-fluid main-container">
 
-<button id="navbar-button" type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="mailto:yg3040@cumc.columbia.edu">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Erin-1334">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Dashboard</h1>
 
 </div>
-<div id="navbar" class="navbar-collapse collapse">
-<ul class="nav navbar-nav navbar-left">
-</ul>
-<ul class="nav navbar-nav navbar-right">
-</ul>
-</div><!--/.nav-collapse-->
-</div><!--/.container-->
-</div><!--/.navbar-->
 
-<script type="text/javascript">
-
-
-var FlexDashboard = (function () {
-
-  // initialize options
-  var _options = {};
-
-  var FlexDashboard = function() {
-
-    // default options
-    _options = $.extend(_options, {
-      theme: "cosmo",
-      fillPage: false,
-      orientation: 'columns',
-      storyboard: false,
-      defaultFigWidth: 576,
-      defaultFigHeight: 461,
-      defaultFigWidthMobile: 360,
-      defaultFigHeightMobile: 461,
-      isMobile: false,
-      isPortrait: false,
-      resize_reload: true
-    });
-  };
-
-  function init(options) {
-
-    // extend default options
-    $.extend(true, _options, options);
-
-    // add ids to sections that don't have them (pandoc won't assign ids
-    // to e.g. sections with titles consisting of only chinese characters)
-    var nextId = 1;
-    $('.level1:not([id]),.level2:not([id]),.level3:not([id])').each(function() {
-      $(this).attr('id', 'dashboard-' + nextId++);
-    });
-
-    // find navbar items
-    var navbarItems = $('#flexdashboard-navbar');
-    if (navbarItems.length)
-      navbarItems = JSON.parse(navbarItems.html());
-    addNavbarItems(navbarItems);
-
-    // find the main dashboard container
-    var dashboardContainer = $('#dashboard-container');
-
-    // resolve mobile classes
-    resolveMobileClasses(dashboardContainer);
-
-    // one time global initialization for components
-    componentsInit(dashboardContainer);
-
-    // look for a global sidebar
-    var globalSidebar = dashboardContainer.find(".section.level1.sidebar");
-    if (globalSidebar.length > 0) {
-
-      // global layout for fullscreen displays
-      if (!isMobilePhone()) {
-
-         // hoist it up to the top level
-         globalSidebar.insertBefore(dashboardContainer);
-
-         // lay it out (set width/positions)
-         layoutSidebar(globalSidebar, dashboardContainer);
-
-      // tuck sidebar into first page for mobile phones
-      } else {
-
-        // convert it into a level3 section
-        globalSidebar.removeClass('sidebar');
-        globalSidebar.removeClass('level1');
-        globalSidebar.addClass('level3');
-        var h1 = globalSidebar.children('h1');
-        var h3 = $('<h3></h3>');
-        h3.append(h1.contents());
-        h3.insertBefore(h1);
-        h1.detach();
-
-        // move it into the first page
-        var page = dashboardContainer.find('.section.level1').first();
-        if (page.length > 0)
-          page.prepend(globalSidebar);
-      }
-    }
-
-    // look for pages to layout
-    var pages = $('div.section.level1');
-    if (pages.length > 0) {
-
-        // find the navbar and collapse on clicked
-        var navbar = $('#navbar');
-        navbar.on("click", "a[data-toggle!=dropdown]", null, function () {
-           navbar.collapse('hide');
-        });
-
-        // envelop the dashboard container in a tab content div
-        dashboardContainer.wrapInner('<div class="tab-content"></div>');
-
-        pages.each(function(index) {
-
-          // lay it out
-          layoutDashboardPage($(this));
-
-          // add it to the navbar
-          addToNavbar($(this), index === 0);
-
-        });
-
-    } else {
-
-      // remove the navbar and navbar button if we don't
-      // have any navbuttons
-      if (navbarItems.length === 0) {
-        $('#navbar').remove();
-        $('#navbar-button').remove();
-      }
-
-      // add the storyboard class if requested
-      if (_options.storyboard)
-        dashboardContainer.addClass('storyboard');
-
-      // layout the entire page
-      layoutDashboardPage(dashboardContainer);
-    }
-
-    // if we are in shiny we need to trigger a window resize event to
-    // force correct layout of shiny-bound-output elements
-    if (isShinyDoc())
-      $(window).trigger('resize');
-
-    // make main components visible
-    $('.section.sidebar').css('visibility', 'visible');
-    dashboardContainer.css('visibility', 'visible');
-
-    // handle location hash
-    handleLocationHash();
-
-    // intialize prism highlighting
-    initPrismHighlighting();
-
-    // record mobile and orientation state then register a handler
-    // to refresh if resize_reload is set to true and it changes
-    _options.isMobile = isMobilePhone();
-    _options.isPortrait = isPortrait();
-    if (_options.resize_reload) {
-      $(window).on('resize', function() {
-        if (_options.isMobile !== isMobilePhone() ||
-            _options.isPortrait !== isPortrait()) {
-          window.location.reload();
-        }
-      });
-    } else {
-      // if in desktop mode and resizing to mobile, make sure the heights are 100%
-      // This enforces what `fillpage.css` does for "wider" pages.
-      // Since we are not reloading once the page becomes small, we need to force the height to 100%
-      // This is a new situation introduced when `_options.resize_reload` is `false`
-      if (! _options.isMobile) {
-        // only add if `fillpage.css` was added in the first place
-        if (_options.fillPage) {
-          // fillpage.css
-          $("html,body,#dashboard").css("height", "100%");
-        }
-      }
-    }
-    // trigger layoutcomplete event
-    dashboardContainer.trigger('flexdashboard:layoutcomplete');
-  }
-
-  function resolveMobileClasses(dashboardContainer) {
-     // add top level layout class
-    dashboardContainer.addClass(isMobilePhone() ? 'mobile-layout' :
-                                                  'desktop-layout');
-
-    // look for .mobile sections and add .no-mobile to their peers
-    var mobileSections = $('.section.mobile');
-    mobileSections.each(function() {
-       var id = $(this).attr('id');
-       var nomobileId = id.replace(/-\d+$/, '');
-       $('#' + nomobileId).addClass('no-mobile');
-    });
-  }
-
-  function addNavbarItems(navbarItems) {
-
-    var navbarLeft = $('ul.navbar-left');
-    var navbarRight = $('ul.navbar-right');
-
-    for (var i = 0; i<navbarItems.length; i++) {
-
-      // get the item
-      var item = navbarItems[i];
-
-      // determine the container
-      var container = null;
-      if (item.align === "left")
-        container = navbarLeft;
-      else
-        container = navbarRight;
-
-      // navbar menu if we have multiple items
-      if (item.items) {
-        var menu = navbarMenu(null, item.icon, item.title, container);
-        for (var j = 0; j<item.items.length; j++) {
-          var subItem = item.items[j];
-          var li = $('<li></li>');
-          var a = navbarLink(subItem.icon, subItem.title, subItem.href, subItem.target);
-          a.removeClass("nav-link").addClass("dropdown-item");
-          li.append(a);
-          menu.append(li);
-        }
-      } else {
-        var li = $('<li class="nav-item"></li>');
-        li.append(navbarLink(item.icon, item.title, item.href, item.target));
-        container.append(li);
-      }
-    }
-  }
-
-  // create or get a reference to an existing dropdown menu
-  function navbarMenu(id, icon, title, container) {
-    var existingMenu = [];
-    if (id)
-      existingMenu = container.children('#' + id);
-    if (existingMenu.length > 0) {
-      return existingMenu.children('ul');
-    } else {
-      var li = $('<li class="nav-item"></li>');
-      if (id)
-        li.attr('id', id);
-      li.addClass('dropdown');
-      // auto add "Share" title on mobile if necessary
-      if (!title && icon && (icon === "fa-share-alt") && isMobilePhone())
-        title = "Share";
-      if (title) {
-        title = title + ' <span class="caret"></span>';
-      }
-      var a = navbarLink(icon, title, "#");
-      a.addClass('dropdown-toggle');
-      a.attr('data-toggle', 'dropdown');
-      a.attr('data-bs-toggle', 'dropdown');
-      a.attr('role', 'button');
-      a.attr('aria-expanded', 'false');
-      li.append(a);
-      var ul = $('<ul class="dropdown-menu"></ul>');
-      ul.attr('role', 'menu');
-      li.append(ul);
-      container.append(li);
-      return ul;
-    }
-  }
-
-  function addToNavbar(page, active) {
-
-    // capture the id and data-icon attribute (if any)
-    var id = page.attr('id');
-    var icon = page.attr('data-icon');
-    var navmenu = page.attr('data-navmenu');
-    var navmenuIcon = page.attr('data-navmenu-icon');
-
-    // get hidden state (transfer this to navbar)
-    var hidden = page.hasClass('hidden');
-    page.removeClass('hidden');
-
-    // sanitize the id for use with bootstrap tabs
-    id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
-    page.attr('id', id);
-
-    // get the wrapper
-    var wrapper = page.closest('.dashboard-page-wrapper');
-
-    // move the id to the wrapper
-    page.removeAttr('id');
-    wrapper.attr('id', id);
-
-    // add the tab-pane class to the wrapper
-    wrapper.addClass('tab-pane');
-
-    // get a reference to the h1, discover its inner contens, then detach it
-    var h1 = wrapper.find('h1').first();
-    var title = h1.contents();
-    h1.detach();
-
-    // create a navbar item
-    var li = $('<li></li>');
-    var a = navbarLink(icon, title, '#' + id);
-    a.attr('data-toggle', 'tab');
-    a.attr('data-bs-toggle', 'tab');
-    li.append(a);
-
-    // add it to the navbar (or navbar menu if specified)
-    var container = $('ul.navbar-left');
-    if (navmenu) {
-      var menuId = navmenu.replace(/\s+/g, '');
-      var menu = navbarMenu(menuId, navmenuIcon, navmenu, container);
-      li.find("> a").removeClass("nav-link").addClass("dropdown-item");
-      menu.append(li);
-    } else {
-      li.addClass("nav-item")
-      container.append(li);
-    }
-
-    // mark active tab and corresponding nav menu item
-    if (active)
-      $(a).tab("show");
-
-    // hide it if requested
-    if (hidden)
-      li.addClass('hidden');
-  }
-
-  function navbarLink(icon, title, href, target) {
-
-    var a = $('<a class="nav-link"></a>');
-    if (icon) {
-
-      // get the name of the icon set and icon
-      var dashPos = icon.indexOf("-");
-      var iconSet = null;
-      var iconSplit = icon.split(" ");
-      if (iconSplit.length > 1) {
-        iconSet = iconSplit[0];
-        icon = iconSplit.slice(1).join(" ");
-      } else {
-        iconSet = icon.substring(0, dashPos);
-      }
-      var iconName = icon.substring(dashPos + 1);
-
-      // create the icon
-      var iconElement = $('<span class="' + iconSet + ' ' + icon + '"></span>');
-      if (title)
-        iconElement.css('margin-right', '7px');
-      a.append(iconElement);
-      // if href is null see if we can auto-generate based on icon (e.g. social)
-      if (!href)
-        maybeGenerateLinkFromIcon(iconName, a);
-    }
-    if (title)
-      a.append(title);
-
-    // add the href.
-    if (href) {
-      if (href === "source_embed") {
-        a.attr('href', '#');
-        a.attr('data-featherlight', "#flexdashboard-source-code");
-        a.featherlight({
-            beforeOpen: function(event){
-              $('body').addClass('unselectable');
-            },
-            afterClose: function(event){
-              $('body').removeClass('unselectable');
-            }
-        });
-      } else {
-        a.attr('href', href);
-      }
-    }
-
-    // add the arget
-    if (target)
-      a.attr('target', target);
-
-    return a;
-  }
-
-  // auto generate a link from an icon name (e.g. twitter) when possible
-  function maybeGenerateLinkFromIcon(iconName, a) {
-
-     var serviceLinks = {
-      "twitter": "https://twitter.com/share?text=" + encodeURIComponent(document.title) + "&url="+encodeURIComponent(location.href),
-      "facebook": "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),
-      "linkedin": "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title),
-      "pinterest": "https://pinterest.com/pin/create/link/?url="+encodeURIComponent(location.href) + "&description=" + encodeURIComponent(document.title)
-    };
-
-    var makeSocialLink = function(a, href) {
-      a.attr('href', '#');
-      a.on('click', function(e) {
-        e.preventDefault();
-        window.open(href);
-      });
-    };
-
-    $.each(serviceLinks, function(key, value) {
-      if (iconName.indexOf(key) !== -1)
-        makeSocialLink(a, value);
-    });
-  }
-
-  // layout a dashboard page
-  function layoutDashboardPage(page) {
-
-    // use a page wrapper so that free form content above the
-    // dashboard appears at the top rather than the side (as it
-    // would without the wrapper in a column orientation)
-    var wrapper = $('<div class="dashboard-page-wrapper"></div>');
-    page.wrap(wrapper);
-
-    // if there are no level2 or level3 headers synthesize a level3
-    // header to contain the (e.g. frame it, scroll container, etc.)
-    var headers = page.find('h2,h3');
-    if (headers.length === 0)
-      page.wrapInner('<div class="section level3"></div>');
-
-    // hoist up any content before level 2 or level 3 headers
-    var children = page.children();
-    children.each(function(index) {
-      if ($(this).hasClass('level2') || $(this).hasClass('level3'))
-        return false;
-      $(this).insertBefore(page);
-    });
-
-    // determine orientation and fillPage behavior for distinct media
-    var orientation, fillPage, storyboard;
-
-    // media: mobile phone
-    if (isMobilePhone()) {
-
-      // if there is a sidebar we need to ensure it's content
-      // is properly framed as an h3
-      var sidebar = page.find('.section.sidebar');
-      sidebar.removeClass('sidebar');
-      sidebar.wrapInner('<div class="section level3"></div>');
-      var h2 = sidebar.find('h2');
-      var h3 = $('<h3></h3>');
-      h3.append(h2.contents());
-      h3.insertBefore(h2);
-      h2.detach();
-
-      // wipeout h2 elements then enclose them in a single h2
-      var level2 = page.find('div.section.level2');
-      level2.each(function() {
-        level2.children('h2').remove();
-        level2.children().unwrap();
-      });
-      page.wrapInner('<div class="section level2"></div>');
-
-      // substitute mobile images
-      if (isPortrait()) {
-        var mobileFigures = $('img.mobile-figure');
-        mobileFigures.each(function() {
-          // get the src (might be base64 encoded)
-          var src = $(this).attr('src');
-
-          // find it's peer
-          var id = $(this).attr('data-mobile-figure-id');
-          var img = $('img[data-figure-id=' + id + "]");
-          img.attr('src', src)
-             .attr('width', _options.defaultFigWidthMobile)
-             .attr('height', _options.defaultFigHeightMobile);
-        });
-      }
-
-      // hoist storyboard commentary into it's own section
-      if (page.hasClass('storyboard')) {
-        var commentaryHR = page.find('div.section.level3 hr');
-        commentaryHR.each(function() {
-          var commentary = $(this).nextAll().detach();
-          var commentarySection = $('<div class="section level3"></div>');
-          commentarySection.append(commentary);
-          commentarySection.insertAfter($(this).closest('div.section.level3'));
-          $(this).remove();
-        });
-      }
-
-      // force a non full screen layout by columns
-      orientation = _options.orientation = 'columns';
-      fillPage = _options.fillPage = false;
-      storyboard = _options.storyboard = false;
-
-    // media: desktop
-    } else {
-
-      // determine orientation
-      orientation = page.attr('data-orientation');
-      if (orientation !== 'rows' && orientation != 'columns')
-        orientation = _options.orientation;
-
-      // determine storyboard mode
-      storyboard = page.hasClass('storyboard');
-
-      // fillPage based on options (force for storyboard)
-      fillPage = _options.fillPage || storyboard;
-
-      // handle sidebar
-      var sidebar = page.find('.section.level2.sidebar');
-      if (sidebar.length > 0)
-        layoutSidebar(sidebar, page);
-    }
-
-    // give it and it's parent divs height: 100% if we are in fillPage mode
-    if (fillPage) {
-      page.addClass('vertical-layout-fill');
-      page.css('height', '100%');
-      page.parents('div').css('height', '100%');
-    } else {
-      page.addClass('vertical-layout-scroll');
-    }
-
-    // perform the layout
-    if (storyboard)
-      layoutPageAsStoryboard(page);
-    else if (orientation === 'rows')
-      layoutPageByRows(page, fillPage);
-    else if (orientation === 'columns')
-      layoutPageByColumns(page, fillPage);
-  }
-
-  function layoutSidebar(sidebar, content) {
-
-    // get it out of the header hierarchy
-    sidebar = sidebar.first();
-    if (sidebar.hasClass('level1')) {
-      sidebar.removeClass('level1');
-      sidebar.children('h1').remove();
-    } else if (sidebar.hasClass('level2')) {
-      sidebar.removeClass('level2');
-      sidebar.children('h2').remove();
-    }
-
-    // determine width
-    var sidebarWidth = isTablet() ? 220 : 250;
-    var dataWidth = parseInt(sidebar.attr('data-width'));
-    if (dataWidth)
-      sidebarWidth = dataWidth;
-
-    // set the width and shift the page right to accomodate the sidebar
-    sidebar.css('width', sidebarWidth + 'px');
-    content.css('padding-left', sidebarWidth + 'px');
-
-    // wrap it's contents in a form
-    sidebar.wrapInner($('<form></form>'));
-  }
-
-  function layoutPageAsStoryboard(page) {
-
-    // create storyboard navigation
-    var nav = $('<div class="storyboard-nav"></div>');
-
-    // add navigation buttons
-    var prev = $('<button class="sbprev"><i class="fa fa-angle-left"></i></button>');
-    nav.append(prev);
-    var next= $('<button class="sbnext"><i class="fa fa-angle-right"></i></button>');
-    nav.append(next);
-
-    // add navigation frame
-    var frameList = $('<div class="sbframelist"></div>');
-    nav.append(frameList);
-    var ul = $('<ul></ul>');
-    frameList.append(ul);
-
-     // find all the level3 sections (those are the storyboard frames)
-    var frames = page.find('div.section.level3');
-    frames.each(function() {
-
-      // mark it
-      $(this).addClass('sbframe');
-
-      // divide it into chart content and (optional) commentary
-      $(this).addClass('dashboard-column-orientation');
-
-      // stuff the chart into it's own div w/ flex
-      $(this).wrapInner('<div class="sbframe-component"></div>');
-      setFlex($(this), 1);
-      var frame = $(this).children('.sbframe-component');
-
-      // extract the title from the h3
-      var li = $('<li></li>');
-      var h3 = frame.children('h3');
-      li.append(h3.contents());
-      h3.detach();
-      ul.append(li);
-
-      // extract commentary
-      var hr = frame.children('hr');
-      if (hr.length) {
-        var commentary = hr.nextAll().detach();
-        hr.remove();
-        var commentaryFrame = $('<div class="sbframe-commentary"></div>');
-        commentaryFrame.addClass('flowing-content-shim');
-        commentaryFrame.addClass('flowing-content-container');
-        commentaryFrame.append(commentary);
-        $(this).append(commentaryFrame);
-
-        // look for a data-commentary-width attribute
-        var commentaryWidth = $(this).attr('data-commentary-width');
-        if (commentaryWidth)
-          commentaryFrame.css('width', commentaryWidth + 'px');
-      }
-
-      // layout the chart (force flex)
-      var result = layoutChart(frame, true);
-
-      // ice the notes if there are none
-      if (!result.notes)
-        frame.find('.chart-notes').remove();
-
-      // set flex on chart
-      setFlex(frame, 1);
-    });
-
-    // create a div to hold all the frames
-    var frameContent = $('<div class="sbframe-content"></div>');
-    frameContent.addClass('dashboard-row-orientation');
-    frameContent.append(frames.detach());
-
-    // row orientation to stack nav and frame content
-    page.addClass('dashboard-row-orientation');
-    page.append(nav);
-    page.append(frameContent);
-    setFlex(frameContent, 1);
-
-    // initialize sly
-    var sly = new Sly(frameList, {
-    		horizontal: true,
-    		itemNav: 'basic',
-    		smart: true,
-    		activateOn: 'click',
-    		startAt: 0,
-    		scrollBy: 1,
-    		activatePageOn: 'click',
-    		speed: 200,
-    		moveBy: 600,
-    		dragHandle: true,
-    		dynamicHandle: true,
-    		clickBar: true,
-    		keyboardNavBy: 'items',
-    		next: next,
-    		prev: prev
-    	}).init();
-
-    // make first frame active
-    frames.removeClass('active');
-    frames.first().addClass('active');
-
-    // subscribe to frame changed events
-    sly.on('active', function (eventName, itemIndex) {
-      frames.removeClass('active');
-      frames.eq(itemIndex).addClass('active')
-                          .trigger('shown');
-    });
-  }
-
-  function layoutPageByRows(page, fillPage) {
-
-    // row orientation
-    page.addClass('dashboard-row-orientation');
-
-    // find all the level2 sections (those are the rows)
-    var rows = page.find('div.section.level2');
-
-    // if there are no level2 sections then treat the
-    // entire page as if it's a level 2 section
-    if (rows.length === 0) {
-      page.wrapInner('<div class="section level2"></div>');
-      rows = page.find('div.section.level2');
-    }
-
-    rows.each(function () {
-
-      // flags
-      var haveNotes = false;
-      var haveFlexHeight = true;
-
-      // remove the h2
-      $(this).children('h2').remove();
-
-      // check for a tabset
-      var isTabset = $(this).hasClass('tabset');
-      if (isTabset)
-        layoutTabset($(this));
-
-      // give it row layout semantics if it's not a tabset
-      if (!isTabset)
-        $(this).addClass('dashboard-row');
-
-      // find all of the level 3 subheads
-      var columns = $(this).find('div.section.level3');
-
-      // determine figureSizes sizes
-      var figureSizes = chartFigureSizes(columns);
-
-      // fixup the columns
-      columns.each(function(index) {
-
-        // layout the chart (force flex if we are in a tabset)
-        var result = layoutChart($(this), isTabset);
-
-        // update flexHeight state
-        if (!result.flex)
-          haveFlexHeight = false;
-
-        // update state
-        if (result.notes)
-          haveNotes = true;
-
-        // set the column flex based on the figure width
-        // (value boxes will just get the default figure width)
-        var chartWidth = figureSizes[index].width;
-        setFlex($(this), chartWidth + ' ' + chartWidth + ' 0px');
-
-      });
-
-      // remove empty chart note divs
-      if (isTabset)
-        $(this).find('.chart-notes').filter(function() {
-            return $(this).html() === "&nbsp;";
-        }).remove();
-      if (!haveNotes)
-        $(this).find('.chart-notes').remove();
-
-       // make it a flexbox row
-      if (haveFlexHeight)
-        $(this).addClass('dashboard-row-flex');
-
-      // now we can set the height on all the wrappers (based on maximum
-      // figure height + room for title and notes, or data-height on the
-      // container if specified). However, don't do this if there is
-      // no flex on any of the constituent columns
-      var flexHeight = null;
-      var dataHeight = parseInt($(this).attr('data-height'));
-      if (dataHeight)
-        flexHeight = adjustedHeight(dataHeight, columns.first());
-      else if (haveFlexHeight)
-        flexHeight = maxChartHeight(figureSizes, columns);
-      if (flexHeight) {
-        if (fillPage)
-          setFlex($(this), flexHeight + ' ' + flexHeight + ' 0px');
-        else {
-          $(this).css('height', flexHeight + 'px');
-          setFlex($(this), '0 0 ' + flexHeight + 'px');
-        }
-      }
-
-    });
-  }
-
-  function layoutPageByColumns(page, fillPage) {
-
-    // column orientation
-    page.addClass('dashboard-column-orientation');
-
-    // find all the level2 sections (those are the columns)
-    var columns = page.find('div.section.level2');
-
-    // if there are no level2 sections then treat the
-    // entire page as if it's a level 2 section
-    if (columns.length === 0) {
-      page.wrapInner('<div class="section level2"></div>');
-      columns = page.find('div.section.level2');
-    }
-
-    // layout each column
-    columns.each(function (index) {
-
-      // remove the h2
-      $(this).children('h2').remove();
-
-      // make it a flexbox column
-      $(this).addClass('dashboard-column');
-
-      // check for a tabset
-      var isTabset = $(this).hasClass('tabset');
-      if (isTabset)
-        layoutTabset($(this));
-
-      // find all the h3 elements
-      var rows = $(this).find('div.section.level3');
-
-      // get the figure sizes for the rows
-      var figureSizes = chartFigureSizes(rows);
-
-      // column flex is the max row width (or data-width if specified)
-      var flexWidth;
-      var dataWidth = parseInt($(this).attr('data-width'));
-      if (dataWidth)
-        flexWidth = dataWidth;
-      else
-        flexWidth = maxChartWidth(figureSizes);
-      setFlex($(this), flexWidth + ' ' + flexWidth + ' 0px');
-
-      // layout each chart
-      rows.each(function(index) {
-
-        // perform the layout
-        var result = layoutChart($(this), false);
-
-        // ice the notes if there are none
-        if (!result.notes)
-          $(this).find('.chart-notes').remove();
-
-        // set flex height based on figHeight, then adjust
-        if (result.flex) {
-          var chartHeight = figureSizes[index].height;
-          chartHeight = adjustedHeight(chartHeight, $(this));
-          if (fillPage)
-            setFlex($(this), chartHeight + ' ' + chartHeight + ' 0px');
-          else {
-            $(this).css('height', chartHeight + 'px');
-            setFlex($(this), chartHeight + ' ' + chartHeight + ' ' + chartHeight + 'px');
-          }
-        }
-      });
-    });
-  }
-
-  function chartFigureSizes(charts) {
-
-    // sizes
-    var figureSizes = new Array(charts.length);
-
-    // check each chart
-    charts.each(function(index) {
-
-      // start with default
-      figureSizes[index] = {
-        width: _options.defaultFigWidth,
-        height: _options.defaultFigHeight
-      };
-
-      // look for data-height or data-width then knit options
-      var dataWidth = parseInt($(this).attr('data-width'));
-      var dataHeight = parseInt($(this).attr('data-height'));
-      var knitrOptions = $(this).find('.knitr-options:first');
-      var knitrWidth, knitrHeight;
-      if (knitrOptions) {
-        knitrWidth = parseInt(knitrOptions.attr('data-fig-width'));
-        knitrHeight =  parseInt(knitrOptions.attr('data-fig-height'));
-      }
-
-      // width
-      if (dataWidth)
-        figureSizes[index].width = dataWidth;
-      else if (knitrWidth)
-        figureSizes[index].width = knitrWidth;
-
-      // height
-      if (dataHeight)
-        figureSizes[index].height = dataHeight;
-      else if (knitrHeight)
-        figureSizes[index].height = knitrHeight;
-    });
-
-    // return sizes
-    return figureSizes;
-  }
-
-  function maxChartHeight(figureSizes, charts) {
-
-    // first compute the maximum height
-    var maxHeight = _options.defaultFigHeight;
-    for (var i = 0; i<figureSizes.length; i++)
-      if (figureSizes[i].height > maxHeight)
-        maxHeight = figureSizes[i].height;
-
-    // now add offests for chart title and chart notes
-    if (charts.length)
-      maxHeight = adjustedHeight(maxHeight, charts.first());
-
-    return maxHeight;
-  }
-
-  function adjustedHeight(height, chart) {
-    if (chart.length > 0) {
-      var chartTitle = chart.find('.chart-title');
-      if (chartTitle.length)
-        height += chartTitle.first().outerHeight();
-      var chartNotes = chart.find('.chart-notes');
-      if (chartNotes.length)
-        height += chartNotes.first().outerHeight();
-    }
-    return height;
-  }
-
-  function maxChartWidth(figureSizes) {
-    var maxWidth = _options.defaultFigWidth;
-    for (var i = 0; i<figureSizes.length; i++)
-      if (figureSizes[i].width > maxWidth)
-        maxWidth = figureSizes[i].width;
-    return maxWidth;
-  }
-
-  // layout a chart
-  function layoutChart(chart, forceFlex) {
-
-    // state to return
-    var result = {
-      notes: false,
-      flex: false
-    };
-
-    // extract the title
-    var title = extractTitle(chart);
-
-    // find components that apply to this container
-    var components = componentsFind(chart);
-
-    // if it's a custom component then call it and return
-    var customComponents = componentsCustom(components);
-    if (customComponents.length) {
-      componentsLayout(customComponents, title, chart);
-      result.notes = false;
-      result.flex = forceFlex || componentsFlex(customComponents);
-      return result;
-    }
-
-    // put all the content in a chart wrapper div
-    chart.addClass('chart-wrapper');
-    chart.wrapInner('<div class="chart-stage"></div>');
-    var chartContent = chart.children('.chart-stage');
-
-    // flex the content if appropriate
-    result.flex = forceFlex || componentsFlex(components);
-    if (result.flex) {
-      // add flex classes
-      chart.addClass('chart-wrapper-flex');
-      chartContent.addClass('chart-stage-flex');
-
-      // additional shim to break out of flexbox sizing
-      chartContent.wrapInner('<div class="chart-shim"></div>');
-      chartContent = chartContent.children('.chart-shim');
-    }
-
-    // set custom data-padding attribute
-    var pad = chart.attr('data-padding');
-    if (pad) {
-      if (pad === "0")
-        chart.addClass('no-padding');
-      else {
-        pad = pad + 'px';
-        chartContent.css('left', pad)
-                    .css('top', pad)
-                    .css('right', pad)
-                    .css('bottom', pad)
-      }
-    }
-
-    // call compoents
-    componentsLayout(components, title, chartContent);
-
-    // also activate components on shiny output
-    findShinyOutput(chartContent).on('shiny:value',
-      function(event) {
-        var element = $(event.target);
-        setTimeout(function() {
-
-          // see if we opted out of flex based on our output (for shiny
-          // we can't tell what type of output we have until after the
-          // value is bound)
-          var components = componentsFind(element);
-          var flex = forceFlex || componentsFlex(components);
-          if (!flex) {
-            chart.css('height', "");
-            setFlex(chart, "");
-            chart.removeClass('chart-wrapper-flex');
-            chartContent.removeClass('chart-stage-flex');
-            chartContent.children().unwrap();
-          }
-
-          // perform layout
-          componentsLayout(components, title, element.parent());
-        }, 10);
-      });
-
-    // add the title
-    var chartTitle = $('<div class="chart-title"></div>');
-    chartTitle.append(title);
-    chart.prepend(chartTitle);
-
-    // add the notes section
-    var chartNotes = $('<div class="chart-notes"></div>');
-    chartNotes.html('&nbsp;');
-    chart.append(chartNotes);
-
-    // attempt to extract notes if we have a component
-    if (components.length)
-      result.notes = extractChartNotes(chartContent, chartNotes);
-
-    // return result
-    return result;
-  }
-
-  // build a tabset from a section div with the .tabset class
-  function layoutTabset(tabset) {
-
-    // check for fade option
-    var fade = tabset.hasClass("tabset-fade");
-    var pills = tabset.hasClass("tabset-pills");
-    var navClass = pills ? "nav-pills" : "nav-tabs";
-
-    // determine the heading level of the tabset and tabs
-    var match = tabset.attr('class').match(/level(\d) /);
-    if (match === null)
-      return;
-    var tabsetLevel = Number(match[1]);
-    var tabLevel = tabsetLevel + 1;
-
-    // find all subheadings immediately below
-    var tabs = tabset.find("div.section.level" + tabLevel);
-    if (!tabs.length)
-      return;
-
-    // create tablist and tab-content elements
-    var tabList = $('<ul class="nav ' + navClass + '" role="tablist"></ul>');
-    $(tabs[0]).before(tabList);
-    var tabContent = $('<div class="tab-content"></div>');
-    $(tabs[0]).before(tabContent);
-
-    // build the tabset
-    var activeTab = 0;
-    tabs.each(function(i) {
-
-      // get the tab div
-      var tab = $(tabs[i]);
-
-      // get the id then sanitize it for use with bootstrap tabs
-      var id = tab.attr('id');
-
-      // see if this is marked as the active tab
-      if (tab.hasClass('active'))
-        activeTab = i;
-
-      // sanitize the id for use with bootstrap tabs
-      id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
-      tab.attr('id', id);
-
-      // get the heading element within it and grab it's text
-      var heading = tab.find('h' + tabLevel + ':first');
-      var headingDom = heading.contents();
-
-      // build and append the tab list item
-      var a = $('<a role="tab" data-toggle="tab" data-bs-toggle="tab" class="nav-link"></a>');
-      a.append(headingDom);
-      a.attr('href', '#' + id);
-      a.attr('aria-controls', id);
-      var li = $('<li role="presentation" class="nav-item"></li>');
-      li.append(a);
-      tabList.append(li);
-
-      // set it's attributes
-      tab.attr('role', 'tabpanel');
-      tab.addClass('tab-pane');
-      tab.addClass('tabbed-pane');
-      tab.addClass('no-title');
-      if (fade)
-        tab.addClass('fade');
-
-      // move it into the tab content div
-      tab.detach().appendTo(tabContent);
-    });
-
-    // set active tab
-    $(tabList.children()[activeTab]).tab("show");
-    var active = $(tabContent.children('div.section')[activeTab]);
-    active.addClass('active');
-    if (fade)
-      active.addClass('in');
-
-    // add nav-tabs-custom
-    tabset.addClass('nav-tabs-custom');
-
-    // internal layout is dashboard-column with tab-content flexing
-    tabset.addClass('dashboard-column');
-    setFlex(tabContent, 1);
-  }
-
-  // one time global initialization for components
-  function componentsInit(dashboardContainer) {
-    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
-      var component = window.FlexDashboardComponents[i];
-      if (component.init)
-        component.init(dashboardContainer);
-    }
-  }
-
-  // find components that apply within a container
-  function componentsFind(container) {
-
-    // look for components
-    var components = [];
-    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
-      var component = window.FlexDashboardComponents[i];
-      if (component.find(container).length)
-        components.push(component);
-    }
-
-    // if there were none then use a special flowing content component
-    // that just adds a scrollbar in fillPage mode
-    if (components.length == 0) {
-      components.push({
-        find: function(container) {
-          return container;
-        },
-
-        flex: function(fillPage) {
-          return fillPage;
-        },
-
-        layout: function(title, container, element, fillPage) {
-          if (fillPage) {
-            container.addClass('flowing-content-shim');
-            container.addClass('flowing-content-container');
-          }
-        }
-      });
-    }
-
-    return components;
-  }
-
-  // if there is a custom component then pick it out
-  function componentsCustom(components) {
-    var customComponent = [];
-    for (var i=0; i<components.length; i++)
-      if (components[i].type === "custom") {
-        customComponent.push(components[i]);
-        break;
-      }
-    return customComponent;
-  }
-
-  // query all components for flex
-  function componentsFlex(components) {
-
-    // no components at all means no flex
-    if (components.length === 0)
-      return false;
-
-    // otherwise query components (assume true unless we see false)
-    var isMobile = isMobilePhone();
-    for (var i=0; i<components.length; i++)
-      if (components[i].flex && !components[i].flex(_options.fillPage))
-        return false;
-    return true;
-  }
-
-  // layout all components
-  function componentsLayout(components, title, container) {
-    var isMobile = isMobilePhone();
-    for (var i=0; i<components.length; i++) {
-      var element = components[i].find(container);
-      if (components[i].layout) {
-        // call layout (don't call other components if it returns false)
-        var result = components[i].layout(title, container, element, _options.fillPage);
-        if (result === false)
-          return;
-      }
-    }
-  }
-
-  // get a reference to the h3, discover it's inner html, and remove it
-  function extractTitle(container) {
-    var h3 = container.children('h3').first();
-    var title = '';
-    if (!container.hasClass('no-title'))
-      title = h3.contents();
-    h3.detach();
-    return title;
-  }
-
-  // extract chart notes
-  function extractChartNotes(chartContent, chartNotes) {
-    // look for a terminating blockquote or image caption
-    var blockquote = chartContent.children('blockquote:last-child');
-    var caption = chartContent.children('div.image-container')
-                              .children('p.caption');
-    if (blockquote.length) {
-      chartNotes.empty().append(blockquote.children('p:first-child').contents());
-      blockquote.remove();
-      return true;
-    } else if (caption.length) {
-      chartNotes.empty().append(caption.contents());
-      caption.remove();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function findShinyOutput(chartContent) {
-    return chartContent.find('.shiny-text-output, .shiny-html-output');
-  }
-
-  // safely detect rendering on a mobile phone
-  function isMobilePhone() {
-    try
-    {
-      return ! window.matchMedia("only screen and (min-width: 768px)").matches;
-    }
-    catch(e) {
-      return false;
-    }
-  }
-
-  function isFillPage() {
-    return _options.fillPage;
-  }
-
-  // detect portrait mode
-  function isPortrait() {
-    return ($(window).width() < $(window).height());
-  }
-
-  // safely detect rendering on a tablet
-  function isTablet() {
-    try
-    {
-      return window.matchMedia("only screen and (min-width: 769px) and (max-width: 992px)").matches;
-    }
-    catch(e) {
-      return false;
-    }
-  }
-
-  // test whether this is a shiny doc
-  function isShinyDoc() {
-    return (typeof(window.Shiny) !== "undefined" && !!window.Shiny.outputBindings);
-  }
-
-  // set flex using vendor specific prefixes
-  function setFlex(el, flex) {
-    el.css('-webkit-box-flex', flex)
-      .css('-webkit-flex', flex)
-      .css('-ms-flex', flex)
-      .css('flex', flex);
-  }
-
-  // support bookmarking of pages
-  function handleLocationHash() {
-
-    // restore tab/page from bookmark
-    var hash = window.decodeURIComponent(window.location.hash);
-    if (hash.length > 0) {
-      // Update the tab without .showPage() so that we don't change page history
-      $('ul.nav a[href="' + hash + '"]').tab('show');
-    }
-
-    // navigate to a tab when the history changes
-    window.addEventListener("popstate", function(e) {
-      var hash = window.decodeURIComponent(window.location.hash);
-      var activeTab = $('ul.nav a[href="' + hash + '"]');
-      if (activeTab.length) {
-        activeTab.tab('show');
-      } else {
-        // returning to the base page URL without a hash activates first tab
-        $('ul.nav a:first').tab('show');
-      }
-    });
-
-    // add a hash to the URL when the user clicks on a tab/page
-    $('.navbar-nav a[data-toggle="tab"]').on('click', function(e) {
-      var baseUrl = FlexDashboardUtils.urlWithoutHash(window.location.href);
-      var hash = FlexDashboardUtils.urlHash($(this).attr('href'));
-      var href = baseUrl + hash;
-      FlexDashboardUtils.setLocation(href);
-    });
-
-    // handle clicks of other links that should activate pages
-    var navPages = $('ul.navbar-nav li a[data-toggle=tab]');
-    navPages.each(function() {
-      var href =  $(this).attr('href');
-      var links = $('a[href="' + href + '"][data-toggle!=tab]');
-      links.each(function() {
-        $(this).on('click', function(e) {
-          window.FlexDashboardUtils.showPage(href);
-        });
-      });
-    });
-  }
-
-  // tweak Prism highlighting
-  function initPrismHighlighting() {
-
-    if (window.Prism) {
-      Prism.languages.insertBefore('r', 'comment', {
-        'heading': [
-          {
-            // title 1
-        	  // =======
-
-        	  // title 2
-        	  // -------
-        	  pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
-            alias: 'operator'
-          },
-          {
-            // ### title 3
-            pattern: /(^\s*)###[^#].+/m,
-            lookbehind: true,
-            alias: 'operator'
-          }
-        ]
-      });
-
-      // prism highlight
-      Prism.highlightAll();
-    }
-  }
-
-  FlexDashboard.prototype = {
-    constructor: FlexDashboard,
-    init: init,
-    isMobilePhone: isMobilePhone,
-    isFillPage: isFillPage
-  };
-
-  return FlexDashboard;
-
-})();
-
-// utils
-window.FlexDashboardUtils = {
-  resizableImage: function(img) {
-    var src = img.attr('src');
-    var url = 'url("' + src + '")';
-    img.parent().css('background', url)
-                .css('background-size', 'contain')
-                .css('background-repeat', 'no-repeat')
-                .css('background-position', 'center')
-                .addClass('image-container');
-  },
-  setLocation: function(href) {
-    if (history && history.pushState) {
-      history.pushState(null, null, href);
-    } else {
-      window.location.replace(href);
-    }
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 10);
-  },
-  showPage: function(href) {
-    $('ul.navbar-nav li a[href="' + href + '"]').tab('show');
-    var baseUrl = this.urlWithoutHash(window.location.href);
-    var loc = baseUrl + href;
-    this.setLocation(loc);
-  },
-  showLinkedValue: function(href) {
-    // check for a page link
-    if ($('ul.navbar-nav li a[data-toggle=tab][href="' + href + '"]').length > 0)
-      this.showPage(href);
-    else
-      window.open(href);
-  },
-  urlWithoutHash: function(url) {
-    var hashLoc = url.indexOf('#');
-    if (hashLoc != -1)
-      return url.substring(0, hashLoc);
-    else
-      return url;
-  },
-  urlHash: function(url) {
-    var hashLoc = url.indexOf('#');
-    if (hashLoc != -1)
-      return url.substring(hashLoc);
-    else
-      return "";
-  }
-};
-
-window.FlexDashboard = new FlexDashboard();
-
-// empty content
-window.FlexDashboardComponents.push({
-  find: function(container) {
-    if (container.find('p').length == 0)
-      return container;
-    else
-      return $();
-  }
-})
-
-// plot image
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('p')
-                    .children('img:only-child');
-  },
-
-  layout: function(title, container, element, fillPage) {
-    FlexDashboardUtils.resizableImage(element);
-  }
-});
-
-// plot image (figure style)
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('div.figure').children('img');
-  },
-
-  layout: function(title, container, element, fillPage) {
-    FlexDashboardUtils.resizableImage(element);
-  }
-});
-
-// htmlwidget
-window.FlexDashboardComponents.push({
-
-  init: function(dashboardContainer) {
-    // trigger "shown" after initial layout to force static htmlwidgets
-    // in runtime: shiny to be resized after the dom has been transformed
-    dashboardContainer.on('flexdashboard:layoutcomplete', function(event) {
-      setTimeout(function() {
-        dashboardContainer.trigger('shown');
-      }, 200);
-    });
-  },
-
-  find: function(container) {
-    return container.children('div[id^="htmlwidget-"],div.html-widget');
-  }
-});
-
-// gauge
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('div.html-widget.gauge');
-  },
-
-  flex: function(fillPage) {
-    return false;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-
-  }
-
-});
-
-// shiny output
-window.FlexDashboardComponents.push({
-  find: function(container) {
-    return container.children('div[class^="shiny-"]');
-  }
-});
-
-// bootstrap table
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    var bsTable = container.find('table.table');
-    if (bsTable.length !== 0)
-      return bsTable;
-    else
-      return container.find('tr.header').parent('thead').parent('table');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-    // alias variables
-    var bsTable = element;
-
-    // fixup xtable generated tables with a proper thead
-    var headerRow = bsTable.find('tbody > tr:first-child > th').parent();
-    if (headerRow.length > 0) {
-      var thead = $('<thead></thead>');
-      bsTable.prepend(thead);
-      headerRow.detach().appendTo(thead);
-    }
-
-    // improve appearance
-    container.addClass('bootstrap-table');
-
-    // for fill page provide scrolling w/ sticky headers
-    if (fillPage) {
-      // force scrollbar on overflow
-      container.addClass('flowing-content-shim');
-
-      // stable table headers when scrolling
-      bsTable.stickyTableHeaders({
-        scrollableArea: container
-      });
-    }
-  }
-});
-
-// embedded shiny app
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.find('iframe.shiny-frame');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-    if (fillPage) {
-      element.attr('height', '100%');
-    } else {
-      // provide default height if necessary
-      var height = element.get(0).style.height;
-      if (!height)
-        height = element.attr('height');
-      if (!height)
-        element.attr('height', 500);
-    }
-  }
-});
-
-// shiny fillRow or fillCol
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.find('.flexfill-container');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-    if (fillPage)
-      element.css('height', '100%');
-    else {
-      // provide default height if necessary
-      var height = element.get(0).style.height;
-      if (height === "100%" || height === "auto" || height === "initial" ||
-          height === "inherit" || !height) {
-        element.css('height', 500);
-      }
-    }
-  }
-});
-
-// valueBox
-window.FlexDashboardComponents.push({
-
-  type: "custom",
-
-  find: function(container) {
-    if (container.find('span.value-output, .shiny-valuebox-output').length)
-      return container;
-    else
-      return $();
-  },
-
-  flex: function(fillPage) {
-    return false;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-    // alias variables
-    var chartTitle = title;
-    var valueBox = element;
-
-    // add value-box class to container
-    container.addClass('value-box');
-
-    // value paragraph
-    var value = $('<p class="value"></p>');
-
-    // if we have shiny-text-output then just move it in
-    var valueOutputSpan = [];
-    var shinyOutput = valueBox.find('.shiny-valuebox-output').detach();
-    if (shinyOutput.length) {
-      valueBox.children().remove();
-      shinyOutput.html("&mdash;");
-      value.append(shinyOutput);
-    } else {
-      // extract the value (remove leading vector index)
-      var chartValue = valueBox.text().trim();
-      chartValue = chartValue.replace("[1] ", "");
-      valueOutputSpan = valueBox.find('span.value-output').detach();
-      valueBox.children().remove();
-      value.text(chartValue);
-    }
-
-    // caption
-    var caption = $('<p class="caption"></p>');
-    caption.append(chartTitle);
-
-    // build inner div for value box and add it
-    var inner = $('<div class="inner"></div>');
-    inner.append(value);
-    inner.append(caption);
-    valueBox.append(inner);
-
-    // add icon if specified
-    var icon = $('<div class="icon"><i></i></div>');
-    valueBox.append(icon);
-    function setIcon(chartIcon) {
-      var iconLib = "";
-      var iconSplit = chartIcon.split(" ");
-      if (iconSplit.length > 1) {
-        iconLib = iconSplit[0];
-        chartIcon = iconSplit.slice(1).join(" ");
-      } else {
-        var components = chartIcon.split("-");
-        if (components.length > 1)
-          iconLib = components[0];
-      }
-      icon.children('i').attr('class', iconLib + ' ' + chartIcon);
-    }
-    var chartIcon = valueBox.attr('data-icon');
-    if (chartIcon)
-      setIcon(chartIcon);
-
-    // handle data attributes in valueOutputSpan
-    function handleValueOutput(valueOutput) {
-
-      // caption
-      var dataCaption = valueOutput.attr('data-caption');
-      if (dataCaption)
-        caption.html(dataCaption);
-
-      // icon
-      var dataIcon = valueOutput.attr('data-icon');
-      if (dataIcon)
-        setIcon(dataIcon);
-
-      // If valueBox(color=) was an accent color, this attr should
-      // be populated with the accent color and the relevant CSS comes
-      // in through HTML dependencies
-      var dataColorAccent = valueOutput.attr('data-color-accent');
-      var valueBoxClasses = "value-box-" + (["primary", "info", "danger", "warning", "success"].join(" value-box-"));
-      if (dataColorAccent) {
-        valueBox.removeClass(valueBoxClasses);
-        valueBox.addClass('value-box-' + dataColorAccent);
-      }
-
-      // If valueBox(color=) was a CSS color, these other data-color-*
-      // attrs will be populated
-      var dataColor = valueOutput.attr('data-color');
-      if (dataColor) {
-        valueBox.removeClass(valueBoxClasses);
-        valueBox.css('background-color', dataColor);
-      }
-      var dataColorText = valueOutput.attr('data-color-text');
-      if (dataColorText) {
-        valueBox.find(".inner").css('color', dataColorText);
-      }
-      var dataColorIcon = valueOutput.attr('data-color-icon');
-      if (dataColorIcon) {
-        valueBox.find(".icon").css('color', dataColorIcon);
-      }
-
-      // url
-      var dataHref = valueOutput.attr('data-href');
-      if (dataHref) {
-        valueBox.addClass('linked-value');
-        valueBox.off('click.value-box');
-        valueBox.on('click.value-box', function(e) {
-          window.FlexDashboardUtils.showLinkedValue(dataHref);
-        });
-      }
-    }
-
-    // check for a valueOutputSpan
-    if (valueOutputSpan.length > 0) {
-      handleValueOutput(valueOutputSpan);
-    }
-
-    // if we have a shinyOutput then bind a listener to handle
-    // new valueOutputSpan values
-    shinyOutput.on('shiny:value',
-      function(event) {
-        var element = $(event.target);
-        setTimeout(function() {
-          var valueOutputSpan = element.find('span.value-output');
-          if (valueOutputSpan.length > 0)
-            handleValueOutput(valueOutputSpan);
-        }, 10);
-      }
-    );
-  }
-});
-</script>
-
-<div id="dashboard-container">
 
 <div id="column" class="section level2" data-width="650">
 <h2>Column</h2>
-We will work on observations from <code>ny_noaa</code> dataset with
+<p>We will work on observations from <code>ny_noaa</code> dataset with
 <code>id</code> “USC00300023”, “USC00301152”, and “USC00304912” in 2001
-without NAs.
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<div id="scatterplots" class="section level3">
-<h3>Scatterplots</h3>
-In this scatterplot, we will look into the relation between tmax and
-tmin across months.
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-c6135e796c771a7178ff" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-c6135e796c771a7178ff">{"x":{"visdat":{"44bc33207190":["function () ","plotlyVisDat"]},"cur_data":"44bc33207190","attrs":{"44bc33207190":{"x":{},"y":{},"mode":"markers","text":{},"color":{},"colors":"viridis","alpha":0.29999999999999999,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"tmax vs tmin across months","xaxis":{"domain":[0,1],"automargin":true,"title":"tmin"},"yaxis":{"domain":[0,1],"automargin":true,"title":"tmax"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-89,-156,-139,-117,-94,-56,-56,-67,-83,-117,-56,-56,-56,6,-28,-28,-61,-94,-117,-139,-133,-44,-106,-122,-72,-89,-106,-83,-94,-56,-111,-50,-100,-72,11,-150,-222,-222,-72,-94,-67,-83,-67,-106,-161,-167,-167,-161,-139,-11,0,-83,-161,-89,-161,-194,-167,-133,-94,-89,-150,-106,-83,-83,-83,-6],"y":[-56,-11,-50,0,0,-11,-11,11,17,-28,28,28,44,44,17,33,17,-6,-6,11,39,33,-28,6,22,-11,-67,-22,0,33,-50,-6,-28,44,72,-72,-100,-39,-28,-28,-33,-6,-17,0,-50,0,6,-56,22,22,17,17,-56,-22,-11,-83,-44,-28,6,6,-89,-28,-22,-44,6,33],"mode":"markers","text":["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"],"type":"scatter","name":"1","marker":{"color":"rgba(68,1,84,0.3)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,0.3)"},"error_y":{"color":"rgba(68,1,84,0.3)"},"error_x":{"color":"rgba(68,1,84,0.3)"},"line":{"color":"rgba(68,1,84,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[17,-39,-83,-122,-72,-22,-6,-61,-44,6,-89,-133,-133,-56,-11,-50,-39,-106,-128,-11,-50,-156,-61,-122,-117,-100,-6,-22,-94,-33,-6,-11,-28,-28,-28,-144,-94,-28,-22,-56,-100,-78,0,-28,-67,-172,-183,-128,-28,-39,-89,-72,-44,-172,-206,-189,-72,-50,-139,-94,-194,-172,-83,-89,-167,-161,-161,-139,-28,-50,-133],"y":[44,39,44,-28,28,39,33,22,67,156,6,-44,28,83,67,11,11,-39,22,39,139,-28,-61,22,11,56,33,28,33,33,39,17,17,89,161,-72,22,61,72,-17,-6,22,100,28,-11,22,-83,-22,0,0,-11,6,78,-44,-122,-17,-6,22,-17,11,-83,-67,22,61,-83,-83,-28,-22,67,-11,-22],"mode":"markers","text":["2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2"],"type":"scatter","name":"2","marker":{"color":"rgba(72,33,115,0.3)","line":{"color":"rgba(72,33,115,1)"}},"textfont":{"color":"rgba(72,33,115,0.3)"},"error_y":{"color":"rgba(72,33,115,0.3)"},"error_x":{"color":"rgba(72,33,115,0.3)"},"line":{"color":"rgba(72,33,115,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-83,-50,-78,-83,-78,-67,-67,-83,-111,-117,-133,6,-44,-56,-56,-67,-100,-106,-100,-28,-17,-39,-89,-94,-122,-122,-56,-56,6,-139,-133,-117,-172,-156,-67,-89,-117,-56,-50,-67,-183,-161,-11,-50,-56,-67,-67,-94,-100,-78,-28,-11,-22,-56,-167,-139,-94,-56,-28,-22],"y":[-6,33,-11,11,-11,50,56,28,33,39,67,78,56,78,28,11,33,22,106,72,28,100,100,11,-6,17,56,89,33,-78,-67,-39,-39,11,-33,-22,-6,17,6,-6,17,22,28,11,56,6,17,22,39,94,106,17,11,22,-28,-33,-11,6,56,11],"mode":"markers","text":["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],"type":"scatter","name":"3","marker":{"color":"rgba(67,62,133,0.3)","line":{"color":"rgba(67,62,133,1)"}},"textfont":{"color":"rgba(67,62,133,0.3)"},"error_y":{"color":"rgba(67,62,133,0.3)"},"error_x":{"color":"rgba(67,62,133,0.3)"},"line":{"color":"rgba(67,62,133,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,-33,-56,-61,-56,0,44,28,28,22,56,50,-22,-28,0,0,-17,-67,-67,-44,67,78,78,11,-28,-33,11,-44,-39,-6,-6,-22,-22,-17,6,17,17,33,17,28,28,100,11,17,39,17,-17,-22,-6,-6,72,72,122,11,-6,44,11,6,22,-22,-17,-39,-61,-56,-44,0,0,22,22,22,33,67,0,-11,-11,-11,-28,-33,-28,-22,89,72,78,-11,-22,-11,-6,-39,-28],"y":[28,56,44,83,122,144,133,111,139,228,156,128,206,172,183,156,139,50,50,117,156,183,272,306,211,128,189,194,122,178,6,28,33,94,122,117,106,94,267,161,117,139,239,128,144,128,128,89,33,106,172,206,239,300,144,128,178,189,106,161,6,28,33,61,83,100,72,61,100,106,122,106,133,89,106,133,117,100,50,67,178,200,178,283,178,128,172,172,56,144],"mode":"markers","text":["4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],"type":"scatter","name":"4","marker":{"color":"rgba(56,89,140,0.3)","line":{"color":"rgba(56,89,140,1)"}},"textfont":{"color":"rgba(56,89,140,0.3)"},"error_y":{"color":"rgba(56,89,140,0.3)"},"error_x":{"color":"rgba(56,89,140,0.3)"},"line":{"color":"rgba(56,89,140,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-22,33,67,89,89,-17,22,44,44,50,50,44,44,-17,-17,0,0,78,94,94,128,122,106,67,67,117,94,72,67,39,0,72,106,117,133,100,22,83,111,72,83,111,133,44,44,56,33,94,117,94,72,117,128,106,61,111,111,117,94,100,67,56,11,89,106,122,78,-6,22,67,83,67,78,106,22,0,-6,56,94,94,56,72,128,128,111,117,128,133,89,67,50,39],"y":[256,294,294,311,306,194,206,211,228,228,256,289,233,144,161,194,228,122,144,250,233,144,228,217,233,194,233,167,150,189,156,228,294,283,300,300,172,178,217,217,244,261,283,139,144,161,183,211,150,194,217,233,167,206,206,217,217,178,211,167,167,167,228,278,272,278,278,156,206,217,250,228,239,278,144,139,172,206,183,178,200,239,228,178,133,206,228,172,211,172,150,117],"mode":"markers","text":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5"],"type":"scatter","name":"5","marker":{"color":"rgba(45,112,142,0.3)","line":{"color":"rgba(45,112,142,1)"}},"textfont":{"color":"rgba(45,112,142,0.3)"},"error_y":{"color":"rgba(45,112,142,0.3)"},"error_x":{"color":"rgba(45,112,142,0.3)"},"line":{"color":"rgba(45,112,142,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,28,56,111,67,67,72,61,44,83,122,128,139,144,144,172,139,111,106,133,144,150,144,106,106,106,106,133,144,167,56,122,117,111,89,117,72,133,133,122,144,133,144,161,200,217,133,161,200,167,144,156,150,122,117,139,161,200,172,217,11,33,106,100,100,117,56,44,56,56,100,128,117,133,183,194,150,144,156,167,94,106,150,128,128,122,139,167,167,172],"y":[183,139,183,117,194,206,217,233,250,239,256,256,294,294,317,294,283,283,267,322,261,228,256,228,239,267,289,300,306,306,178,178,200,167,183,206,222,244,244,244,250,233,261,300,322,311,256,272,250,344,244,211,261,211,233,267,289,306,294,317,133,189,167,156,128,178,194,222,222,233,250,156,239,283,317,317,278,256,250,322,222,211,228,172,211,272,278,278,250,272],"mode":"markers","text":["6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6"],"type":"scatter","name":"6","marker":{"color":"rgba(37,133,142,0.3)","line":{"color":"rgba(37,133,142,1)"}},"textfont":{"color":"rgba(37,133,142,0.3)"},"error_y":{"color":"rgba(37,133,142,0.3)"},"error_x":{"color":"rgba(37,133,142,0.3)"},"line":{"color":"rgba(37,133,142,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[183,72,61,67,117,83,72,78,128,122,133,100,94,106,122,100,100,161,128,128,117,111,139,178,194,161,56,56,56,167,156,222,78,100,100,133,106,133,167,178,183,139,144,139,144,156,122,161,144,156,167,183,211,194,239,200,94,94,156,156,156,183,78,89,89,133,100,111,122,133,144,133,122,128,133,94,100,139,111,122,156,128,167,167,189,156,139,56,72,106,128,111],"y":[311,311,194,222,261,261,217,272,267,300,294,233,228,211,183,261,283,250,283,278,289,306,322,322,328,328,228,256,222,222,233,317,256,200,222,261,244,217,272,261,306,294,228,217,233,233,278,289,233,278,289,289,294,283,350,333,211,228,261,250,239,289,222,178,200,250,217,183,250,217,267,250,200,183,206,189,244,250,256,272,278,283,283,294,317,306,261,211,228,244,261,272],"mode":"markers","text":["7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7"],"type":"scatter","name":"7","marker":{"color":"rgba(30,155,138,0.3)","line":{"color":"rgba(30,155,138,1)"}},"textfont":{"color":"rgba(30,155,138,0.3)"},"error_y":{"color":"rgba(30,155,138,0.3)"},"error_x":{"color":"rgba(30,155,138,0.3)"},"line":{"color":"rgba(30,155,138,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[144,139,144,183,128,128,128,156,189,161,117,183,150,144,89,89,106,128,128,150,144,100,100,122,156,117,117,128,111,100,94,161,206,239,189,139,178,228,228,250,250,156,178,178,161,106,167,206,172,178,172,178,161,156,178,89,139,183,144,156,133,172,117,133,189,161,128,156,156,189,189,206,122,128,167,122,78,89,172,178,139,156,156,161,111,128,72,94,156,122,117,78,89],"y":[278,306,311,283,294,322,333,344,356,361,306,261,317,317,261,317,272,272,272,278,278,261,272,194,272,267,272,261,256,239,267,294,317,344,306,289,317,350,344,367,383,306,294,267,306,261,317,283,250,267,261,261,267,278,244,250,289,306,272,250,228,289,289,306,311,300,300,306,317,317,322,339,278,283,256,283,256,272,283,256,244,283,283,233,250,261,228,267,278,233,228,211,261],"mode":"markers","text":["8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8"],"type":"scatter","name":"8","marker":{"color":"rgba(43,176,127,0.3)","line":{"color":"rgba(43,176,127,1)"}},"textfont":{"color":"rgba(43,176,127,0.3)"},"error_y":{"color":"rgba(43,176,127,0.3)"},"error_x":{"color":"rgba(43,176,127,0.3)"},"line":{"color":"rgba(43,176,127,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[144,56,61,67,122,61,61,83,78,156,83,72,67,78,78,61,6,83,67,67,106,100,72,72,83,44,50,72,72,17,122,72,117,167,117,78,128,194,217,211,133,106,156,100,83,67,72,111,128,150,144,144,111,144,133,78,78,56,67,33,94,61,72,111,83,61,78,106,172,172,128,72,72,61,6,17,44,44,50,72,133,133,122,106,128,44,44,67,28,-6],"y":[283,183,211,256,250,206,250,306,300,300,239,228,256,228,150,189,217,228,233,239,200,239,239,228,206,144,117,150,161,167,289,183,222,272,250,200,267,306,317,311,239,239,267,222,167,189,217,244,228,250,222,250,217,239,217,144,144,139,139,172,267,161,200,250,233,189,233,289,300,294,233,206,233,189,167,156,194,222,194,250,183,233,217,222,244,172,133,117,122,167],"mode":"markers","text":["9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"type":"scatter","name":"9","marker":{"color":"rgba(81,196,106,0.3)","line":{"color":"rgba(81,196,106,1)"}},"textfont":{"color":"rgba(81,196,106,0.3)"},"error_y":{"color":"rgba(81,196,106,0.3)"},"error_x":{"color":"rgba(81,196,106,0.3)"},"line":{"color":"rgba(81,196,106,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[6,6,50,50,61,67,0,-33,-44,-39,22,22,89,50,11,6,-33,-39,-11,17,67,56,56,89,50,22,0,-61,-61,11,44,111,133,156,117,61,28,6,-6,56,122,128,133,150,83,67,56,17,28,72,72,72,72,72,72,61,22,22,6,39,0,-11,17,83,100,94,67,17,-17,-28,-28,78,78,128,144,89,39,39,-17,-6,33,61,39,17,50,133,28,-6,-17,-17,0,-44],"y":[161,211,239,261,250,244,133,94,94,172,222,239,256,194,172,178,72,122,183,183,233,133,206,183,178,78,78,72,183,100,178,211,244,272,272,183,139,89,94,183,222,250,189,256,211,150,167,72,122,189,178,233,233,233,233,150,61,56,56,150,150,156,194,200,250,206,156,122,78,83,144,217,233,200,244,211,150,172,67,78,167,150,167,167,172,167,178,78,39,56,100,67],"mode":"markers","text":["10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10"],"type":"scatter","name":"10","marker":{"color":"rgba(133,213,74,0.3)","line":{"color":"rgba(133,213,74,1)"}},"textfont":{"color":"rgba(133,213,74,0.3)"},"error_y":{"color":"rgba(133,213,74,0.3)"},"error_x":{"color":"rgba(133,213,74,0.3)"},"line":{"color":"rgba(133,213,74,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[6,6,50,11,33,22,-22,17,22,-72,-67,-67,0,28,-33,-50,-50,-17,-56,-56,-44,56,17,22,33,50,56,133,78,28,22,17,28,22,17,0,11,-22,-17,44,100,133,-17,0,50,11,-17,17,33,61,83,83,50,50,28,56,-22,67,56,50,-17,-6,-6,-44,-39,-17,0,-22,-61,-22,39,89,-56,-56,-6,0,-33,-17,0,33,50,72,50,6,-6,28],"y":[100,200,228,183,183,44,111,150,200,83,83,139,178,172,183,117,178,189,122,150,161,167,122,100,122,128,133,206,217,133,167,50,111,128,206,61,133,28,61,150,161,178,150,106,183,206,50,78,111,156,167,167,83,122,72,139,67,194,206,122,139,44,89,89,111,28,78,17,22,111,117,144,133,78,156,172,33,50,89,122,144,156,83,100,39,83],"mode":"markers","text":["11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11"],"type":"scatter","name":"11","marker":{"color":"rgba(194,223,35,0.3)","line":{"color":"rgba(194,223,35,1)"}},"textfont":{"color":"rgba(194,223,35,0.3)"},"error_y":{"color":"rgba(194,223,35,0.3)"},"error_x":{"color":"rgba(194,223,35,0.3)"},"line":{"color":"rgba(194,223,35,0.3)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[72,50,-44,-50,-28,72,0,-39,-33,-44,-61,67,0,-61,-61,11,22,-28,-11,-56,-44,-39,-78,-117,-122,-128,-111,-83,-83,178,61,0,28,33,122,28,-33,-11,-17,-17,0,44,61,0,-28,33,17,6,0,-22,-44,-44,-6,-39,-89,-89,-61,-72,28,28,-22,-22,-6,100,-33,-83,-78,-56,-50,-61,-44,39,-28,-94,-89,-28,-33,-6,-39,-89,-117,-33,-56,-56,-94,-94,-78,-111,-72],"y":[172,117,117,150,172,206,167,117,17,39,83,117,106,106,17,33,44,83,17,17,33,61,39,11,-6,-33,-6,-6,-28,178,106,100,167,156,222,133,94,22,39,67,83,89,133,61,11,44,50,44,78,28,22,39,67,28,17,17,11,-17,144,94,94,128,128,194,183,72,-6,11,50,67,56,111,44,-28,-6,6,17,28,22,-33,-28,22,22,-11,-39,-44,-22,-33,-44],"mode":"markers","text":["12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12"],"type":"scatter","name":"12","marker":{"color":"rgba(253,231,37,0.3)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,0.3)"},"error_y":{"color":"rgba(253,231,37,0.3)"},"error_x":{"color":"rgba(253,231,37,0.3)"},"line":{"color":"rgba(253,231,37,0.3)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div id="column-1" class="section level2" data-width="350">
-<h2>Column</h2>
-<div id="boxplot" class="section level3">
-<h3>boxplot</h3>
-In this boxplot, we will look into the distribution of tmax across
-months.
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-9e87f91134da17957263" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-9e87f91134da17957263">{"x":{"visdat":{"44bc1afb740c":["function () ","plotlyVisDat"]},"cur_data":"44bc1afb740c","attrs":{"44bc1afb740c":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"distribution of tmax across months","xaxis":{"domain":[0,1],"automargin":true,"title":"month","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6","7","8","9","10","11","12"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"tmax"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(68,1,84,0.5)","x":["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"],"y":[-56,-11,-50,0,0,-11,-11,11,17,-28,28,28,44,44,17,33,17,-6,-6,11,39,33,-28,6,22,-11,-67,-22,0,33,-50,-6,-28,44,72,-72,-100,-39,-28,-28,-33,-6,-17,0,-50,0,6,-56,22,22,17,17,-56,-22,-11,-83,-44,-28,6,6,-89,-28,-22,-44,6,33],"type":"box","name":"1","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(72,33,115,0.5)","x":["2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2"],"y":[44,39,44,-28,28,39,33,22,67,156,6,-44,28,83,67,11,11,-39,22,39,139,-28,-61,22,11,56,33,28,33,33,39,17,17,89,161,-72,22,61,72,-17,-6,22,100,28,-11,22,-83,-22,0,0,-11,6,78,-44,-122,-17,-6,22,-17,11,-83,-67,22,61,-83,-83,-28,-22,67,-11,-22],"type":"box","name":"2","marker":{"color":"rgba(72,33,115,1)","line":{"color":"rgba(72,33,115,1)"}},"line":{"color":"rgba(72,33,115,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(67,62,133,0.5)","x":["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],"y":[-6,33,-11,11,-11,50,56,28,33,39,67,78,56,78,28,11,33,22,106,72,28,100,100,11,-6,17,56,89,33,-78,-67,-39,-39,11,-33,-22,-6,17,6,-6,17,22,28,11,56,6,17,22,39,94,106,17,11,22,-28,-33,-11,6,56,11],"type":"box","name":"3","marker":{"color":"rgba(67,62,133,1)","line":{"color":"rgba(67,62,133,1)"}},"line":{"color":"rgba(67,62,133,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(56,89,140,0.5)","x":["4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],"y":[28,56,44,83,122,144,133,111,139,228,156,128,206,172,183,156,139,50,50,117,156,183,272,306,211,128,189,194,122,178,6,28,33,94,122,117,106,94,267,161,117,139,239,128,144,128,128,89,33,106,172,206,239,300,144,128,178,189,106,161,6,28,33,61,83,100,72,61,100,106,122,106,133,89,106,133,117,100,50,67,178,200,178,283,178,128,172,172,56,144],"type":"box","name":"4","marker":{"color":"rgba(56,89,140,1)","line":{"color":"rgba(56,89,140,1)"}},"line":{"color":"rgba(56,89,140,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(45,112,142,0.5)","x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5"],"y":[256,294,294,311,306,194,206,211,228,228,256,289,233,144,161,194,228,122,144,250,233,144,228,217,233,194,233,167,150,189,156,228,294,283,300,300,172,178,217,217,244,261,283,139,144,161,183,211,150,194,217,233,167,206,206,217,217,178,211,167,167,167,228,278,272,278,278,156,206,217,250,228,239,278,144,139,172,206,183,178,200,239,228,178,133,206,228,172,211,172,150,117],"type":"box","name":"5","marker":{"color":"rgba(45,112,142,1)","line":{"color":"rgba(45,112,142,1)"}},"line":{"color":"rgba(45,112,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(37,133,142,0.5)","x":["6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6"],"y":[183,139,183,117,194,206,217,233,250,239,256,256,294,294,317,294,283,283,267,322,261,228,256,228,239,267,289,300,306,306,178,178,200,167,183,206,222,244,244,244,250,233,261,300,322,311,256,272,250,344,244,211,261,211,233,267,289,306,294,317,133,189,167,156,128,178,194,222,222,233,250,156,239,283,317,317,278,256,250,322,222,211,228,172,211,272,278,278,250,272],"type":"box","name":"6","marker":{"color":"rgba(37,133,142,1)","line":{"color":"rgba(37,133,142,1)"}},"line":{"color":"rgba(37,133,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(30,155,138,0.5)","x":["7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7"],"y":[311,311,194,222,261,261,217,272,267,300,294,233,228,211,183,261,283,250,283,278,289,306,322,322,328,328,228,256,222,222,233,317,256,200,222,261,244,217,272,261,306,294,228,217,233,233,278,289,233,278,289,289,294,283,350,333,211,228,261,250,239,289,222,178,200,250,217,183,250,217,267,250,200,183,206,189,244,250,256,272,278,283,283,294,317,306,261,211,228,244,261,272],"type":"box","name":"7","marker":{"color":"rgba(30,155,138,1)","line":{"color":"rgba(30,155,138,1)"}},"line":{"color":"rgba(30,155,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(43,176,127,0.5)","x":["8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8"],"y":[278,306,311,283,294,322,333,344,356,361,306,261,317,317,261,317,272,272,272,278,278,261,272,194,272,267,272,261,256,239,267,294,317,344,306,289,317,350,344,367,383,306,294,267,306,261,317,283,250,267,261,261,267,278,244,250,289,306,272,250,228,289,289,306,311,300,300,306,317,317,322,339,278,283,256,283,256,272,283,256,244,283,283,233,250,261,228,267,278,233,228,211,261],"type":"box","name":"8","marker":{"color":"rgba(43,176,127,1)","line":{"color":"rgba(43,176,127,1)"}},"line":{"color":"rgba(43,176,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(81,196,106,0.5)","x":["9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"y":[283,183,211,256,250,206,250,306,300,300,239,228,256,228,150,189,217,228,233,239,200,239,239,228,206,144,117,150,161,167,289,183,222,272,250,200,267,306,317,311,239,239,267,222,167,189,217,244,228,250,222,250,217,239,217,144,144,139,139,172,267,161,200,250,233,189,233,289,300,294,233,206,233,189,167,156,194,222,194,250,183,233,217,222,244,172,133,117,122,167],"type":"box","name":"9","marker":{"color":"rgba(81,196,106,1)","line":{"color":"rgba(81,196,106,1)"}},"line":{"color":"rgba(81,196,106,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(133,213,74,0.5)","x":["10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10"],"y":[161,211,239,261,250,244,133,94,94,172,222,239,256,194,172,178,72,122,183,183,233,133,206,183,178,78,78,72,183,100,178,211,244,272,272,183,139,89,94,183,222,250,189,256,211,150,167,72,122,189,178,233,233,233,233,150,61,56,56,150,150,156,194,200,250,206,156,122,78,83,144,217,233,200,244,211,150,172,67,78,167,150,167,167,172,167,178,78,39,56,100,67],"type":"box","name":"10","marker":{"color":"rgba(133,213,74,1)","line":{"color":"rgba(133,213,74,1)"}},"line":{"color":"rgba(133,213,74,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(194,223,35,0.5)","x":["11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11"],"y":[100,200,228,183,183,44,111,150,200,83,83,139,178,172,183,117,178,189,122,150,161,167,122,100,122,128,133,206,217,133,167,50,111,128,206,61,133,28,61,150,161,178,150,106,183,206,50,78,111,156,167,167,83,122,72,139,67,194,206,122,139,44,89,89,111,28,78,17,22,111,117,144,133,78,156,172,33,50,89,122,144,156,83,100,39,83],"type":"box","name":"11","marker":{"color":"rgba(194,223,35,1)","line":{"color":"rgba(194,223,35,1)"}},"line":{"color":"rgba(194,223,35,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(253,231,37,0.5)","x":["12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12"],"y":[172,117,117,150,172,206,167,117,17,39,83,117,106,106,17,33,44,83,17,17,33,61,39,11,-6,-33,-6,-6,-28,178,106,100,167,156,222,133,94,22,39,67,83,89,133,61,11,44,50,44,78,28,22,39,67,28,17,17,11,-17,144,94,94,128,128,194,183,72,-6,11,50,67,56,111,44,-28,-6,6,17,28,22,-33,-28,22,22,-11,-39,-44,-22,-33,-44],"type":"box","name":"12","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="barplot" class="section level3">
-<h3>barplot</h3>
-In this boxplot, we will compare the total precipitation across months.
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-51eeb7d4e095e8006b92" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-51eeb7d4e095e8006b92">{"x":{"visdat":{"44bc47eb2fbc":["function () ","plotlyVisDat"]},"cur_data":"44bc47eb2fbc","attrs":{"44bc47eb2fbc":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"total precipitation across months","xaxis":{"domain":[0,1],"automargin":true,"title":"month","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6","7","8","9","10","11","12"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"total precipitation"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["1"],"y":[484],"type":"bar","name":"1","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,1)"},"error_y":{"color":"rgba(68,1,84,1)"},"error_x":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2"],"y":[1150],"type":"bar","name":"2","marker":{"color":"rgba(72,33,115,1)","line":{"color":"rgba(72,33,115,1)"}},"textfont":{"color":"rgba(72,33,115,1)"},"error_y":{"color":"rgba(72,33,115,1)"},"error_x":{"color":"rgba(72,33,115,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["3"],"y":[1785],"type":"bar","name":"3","marker":{"color":"rgba(67,62,133,1)","line":{"color":"rgba(67,62,133,1)"}},"textfont":{"color":"rgba(67,62,133,1)"},"error_y":{"color":"rgba(67,62,133,1)"},"error_x":{"color":"rgba(67,62,133,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["4"],"y":[958],"type":"bar","name":"4","marker":{"color":"rgba(56,89,140,1)","line":{"color":"rgba(56,89,140,1)"}},"textfont":{"color":"rgba(56,89,140,1)"},"error_y":{"color":"rgba(56,89,140,1)"},"error_x":{"color":"rgba(56,89,140,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["5"],"y":[1955],"type":"bar","name":"5","marker":{"color":"rgba(45,112,142,1)","line":{"color":"rgba(45,112,142,1)"}},"textfont":{"color":"rgba(45,112,142,1)"},"error_y":{"color":"rgba(45,112,142,1)"},"error_x":{"color":"rgba(45,112,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["6"],"y":[2172],"type":"bar","name":"6","marker":{"color":"rgba(37,133,142,1)","line":{"color":"rgba(37,133,142,1)"}},"textfont":{"color":"rgba(37,133,142,1)"},"error_y":{"color":"rgba(37,133,142,1)"},"error_x":{"color":"rgba(37,133,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["7"],"y":[1304],"type":"bar","name":"7","marker":{"color":"rgba(30,155,138,1)","line":{"color":"rgba(30,155,138,1)"}},"textfont":{"color":"rgba(30,155,138,1)"},"error_y":{"color":"rgba(30,155,138,1)"},"error_x":{"color":"rgba(30,155,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["8"],"y":[2066],"type":"bar","name":"8","marker":{"color":"rgba(43,176,127,1)","line":{"color":"rgba(43,176,127,1)"}},"textfont":{"color":"rgba(43,176,127,1)"},"error_y":{"color":"rgba(43,176,127,1)"},"error_x":{"color":"rgba(43,176,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["9"],"y":[3744],"type":"bar","name":"9","marker":{"color":"rgba(81,196,106,1)","line":{"color":"rgba(81,196,106,1)"}},"textfont":{"color":"rgba(81,196,106,1)"},"error_y":{"color":"rgba(81,196,106,1)"},"error_x":{"color":"rgba(81,196,106,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["10"],"y":[1971],"type":"bar","name":"10","marker":{"color":"rgba(133,213,74,1)","line":{"color":"rgba(133,213,74,1)"}},"textfont":{"color":"rgba(133,213,74,1)"},"error_y":{"color":"rgba(133,213,74,1)"},"error_x":{"color":"rgba(133,213,74,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["11"],"y":[1759],"type":"bar","name":"11","marker":{"color":"rgba(194,223,35,1)","line":{"color":"rgba(194,223,35,1)"}},"textfont":{"color":"rgba(194,223,35,1)"},"error_y":{"color":"rgba(194,223,35,1)"},"error_x":{"color":"rgba(194,223,35,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["12"],"y":[2321],"type":"bar","name":"12","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,1)"},"error_y":{"color":"rgba(253,231,37,1)"},"error_x":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-
-</div>
-
-<script>
-$(document).ready(function() {
-  // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed table-sm');
-
-  // initialize mathjax
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-  document.getElementsByTagName("head")[0].appendChild(script);
-
-});
-</script>
-
-<div id="flexdashboard-source-code">
-<pre class="line-numbers"><code class="language-r">---
-title: "Dashboard"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
-    source: embed
----
-
-```{r setup, include=FALSE}
-library(tidyverse)
-library(flexdashboard)
-library(plotly)
-library(p8105.datasets)
-data("ny_noaa")
-```
-## Column {data-width="650"}
-
-We will work on observations from `ny_noaa` dataset with `id` "USC00300023", "USC00301152", and "USC00304912" in 2001 without NAs.
-```{r}
-weather_df = 
+without NAs.</p>
+<pre class="r"><code>weather_df = 
   ny_noaa %&gt;% 
   na.omit() |&gt; 
-  separate(date, into = c("year", "month", "day"), convert = TRUE) %&gt;% 
+  separate(date, into = c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;), convert = TRUE) %&gt;% 
   mutate(
     month = factor(month, levels = 1:12),
     tmax = as.numeric(tmax),
     tmin = as.numeric(tmin)) |&gt; 
   filter(
     year == 2001,
-    id %in% c("USC00300023", "USC00301152", "USC00304912"))
-```
-
-### Scatterplots
-
-In this scatterplot, we will look into the relation between tmax and tmin across months.
-```{r}
-scatterplot = 
+    id %in% c(&quot;USC00300023&quot;, &quot;USC00301152&quot;, &quot;USC00304912&quot;))</code></pre>
+<div id="scatterplots" class="section level3">
+<h3>Scatterplots</h3>
+<p>In this scatterplot, we will look into the relation between tmax and
+tmin across months.</p>
+<pre class="r"><code>scatterplot = 
   weather_df |&gt; 
   plot_ly(x = ~tmin,
     y = ~tmax,
     color = ~month,
-    type = "scatter",
-    mode = "markers",
-    colors = "viridis",
-    text = ~month, alpha = 0.3) |&gt; 
+    type = &quot;scatter&quot;,
+    mode = &quot;markers&quot;,
+    colors = &quot;viridis&quot;,
+    text = ~month, alpha = 0.5) |&gt; 
   layout(
-    title = "tmax vs tmin across months",
-    xaxis = list(title = "tmin"),
-    yaxis = list(title = "tmax")
+    title = &quot;tmax vs tmin across months&quot;,
+    xaxis = list(title = &quot;tmin&quot;),
+    yaxis = list(title = &quot;tmax&quot;)
   )
 
-scatterplot
-
-```
-
-## Column {data-width="350"}
-
-### boxplot
-In this boxplot, we will look into the distribution of tmax across months.
-```{r}
-boxplot = 
+scatterplot</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-83ecfc680b389b181f7a" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-83ecfc680b389b181f7a">{"x":{"visdat":{"b3451a0630e":["function () ","plotlyVisDat"]},"cur_data":"b3451a0630e","attrs":{"b3451a0630e":{"x":{},"y":{},"mode":"markers","text":{},"color":{},"colors":"viridis","alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"tmax vs tmin across months","xaxis":{"domain":[0,1],"automargin":true,"title":"tmin"},"yaxis":{"domain":[0,1],"automargin":true,"title":"tmax"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-89,-156,-139,-117,-94,-56,-56,-67,-83,-117,-56,-56,-56,6,-28,-28,-61,-94,-117,-139,-133,-44,-106,-122,-72,-89,-106,-83,-94,-56,-111,-50,-100,-72,11,-150,-222,-222,-72,-94,-67,-83,-67,-106,-161,-167,-167,-161,-139,-11,0,-83,-161,-89,-161,-194,-167,-133,-94,-89,-150,-106,-83,-83,-83,-6],"y":[-56,-11,-50,0,0,-11,-11,11,17,-28,28,28,44,44,17,33,17,-6,-6,11,39,33,-28,6,22,-11,-67,-22,0,33,-50,-6,-28,44,72,-72,-100,-39,-28,-28,-33,-6,-17,0,-50,0,6,-56,22,22,17,17,-56,-22,-11,-83,-44,-28,6,6,-89,-28,-22,-44,6,33],"mode":"markers","text":["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"],"type":"scatter","name":"1","marker":{"color":"rgba(68,1,84,0.5)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,0.5)"},"error_y":{"color":"rgba(68,1,84,0.5)"},"error_x":{"color":"rgba(68,1,84,0.5)"},"line":{"color":"rgba(68,1,84,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[17,-39,-83,-122,-72,-22,-6,-61,-44,6,-89,-133,-133,-56,-11,-50,-39,-106,-128,-11,-50,-156,-61,-122,-117,-100,-6,-22,-94,-33,-6,-11,-28,-28,-28,-144,-94,-28,-22,-56,-100,-78,0,-28,-67,-172,-183,-128,-28,-39,-89,-72,-44,-172,-206,-189,-72,-50,-139,-94,-194,-172,-83,-89,-167,-161,-161,-139,-28,-50,-133],"y":[44,39,44,-28,28,39,33,22,67,156,6,-44,28,83,67,11,11,-39,22,39,139,-28,-61,22,11,56,33,28,33,33,39,17,17,89,161,-72,22,61,72,-17,-6,22,100,28,-11,22,-83,-22,0,0,-11,6,78,-44,-122,-17,-6,22,-17,11,-83,-67,22,61,-83,-83,-28,-22,67,-11,-22],"mode":"markers","text":["2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2"],"type":"scatter","name":"2","marker":{"color":"rgba(72,33,115,0.5)","line":{"color":"rgba(72,33,115,1)"}},"textfont":{"color":"rgba(72,33,115,0.5)"},"error_y":{"color":"rgba(72,33,115,0.5)"},"error_x":{"color":"rgba(72,33,115,0.5)"},"line":{"color":"rgba(72,33,115,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-83,-50,-78,-83,-78,-67,-67,-83,-111,-117,-133,6,-44,-56,-56,-67,-100,-106,-100,-28,-17,-39,-89,-94,-122,-122,-56,-56,6,-139,-133,-117,-172,-156,-67,-89,-117,-56,-50,-67,-183,-161,-11,-50,-56,-67,-67,-94,-100,-78,-28,-11,-22,-56,-167,-139,-94,-56,-28,-22],"y":[-6,33,-11,11,-11,50,56,28,33,39,67,78,56,78,28,11,33,22,106,72,28,100,100,11,-6,17,56,89,33,-78,-67,-39,-39,11,-33,-22,-6,17,6,-6,17,22,28,11,56,6,17,22,39,94,106,17,11,22,-28,-33,-11,6,56,11],"mode":"markers","text":["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],"type":"scatter","name":"3","marker":{"color":"rgba(67,62,133,0.5)","line":{"color":"rgba(67,62,133,1)"}},"textfont":{"color":"rgba(67,62,133,0.5)"},"error_y":{"color":"rgba(67,62,133,0.5)"},"error_x":{"color":"rgba(67,62,133,0.5)"},"line":{"color":"rgba(67,62,133,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,-33,-56,-61,-56,0,44,28,28,22,56,50,-22,-28,0,0,-17,-67,-67,-44,67,78,78,11,-28,-33,11,-44,-39,-6,-6,-22,-22,-17,6,17,17,33,17,28,28,100,11,17,39,17,-17,-22,-6,-6,72,72,122,11,-6,44,11,6,22,-22,-17,-39,-61,-56,-44,0,0,22,22,22,33,67,0,-11,-11,-11,-28,-33,-28,-22,89,72,78,-11,-22,-11,-6,-39,-28],"y":[28,56,44,83,122,144,133,111,139,228,156,128,206,172,183,156,139,50,50,117,156,183,272,306,211,128,189,194,122,178,6,28,33,94,122,117,106,94,267,161,117,139,239,128,144,128,128,89,33,106,172,206,239,300,144,128,178,189,106,161,6,28,33,61,83,100,72,61,100,106,122,106,133,89,106,133,117,100,50,67,178,200,178,283,178,128,172,172,56,144],"mode":"markers","text":["4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],"type":"scatter","name":"4","marker":{"color":"rgba(56,89,140,0.5)","line":{"color":"rgba(56,89,140,1)"}},"textfont":{"color":"rgba(56,89,140,0.5)"},"error_y":{"color":"rgba(56,89,140,0.5)"},"error_x":{"color":"rgba(56,89,140,0.5)"},"line":{"color":"rgba(56,89,140,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-22,33,67,89,89,-17,22,44,44,50,50,44,44,-17,-17,0,0,78,94,94,128,122,106,67,67,117,94,72,67,39,0,72,106,117,133,100,22,83,111,72,83,111,133,44,44,56,33,94,117,94,72,117,128,106,61,111,111,117,94,100,67,56,11,89,106,122,78,-6,22,67,83,67,78,106,22,0,-6,56,94,94,56,72,128,128,111,117,128,133,89,67,50,39],"y":[256,294,294,311,306,194,206,211,228,228,256,289,233,144,161,194,228,122,144,250,233,144,228,217,233,194,233,167,150,189,156,228,294,283,300,300,172,178,217,217,244,261,283,139,144,161,183,211,150,194,217,233,167,206,206,217,217,178,211,167,167,167,228,278,272,278,278,156,206,217,250,228,239,278,144,139,172,206,183,178,200,239,228,178,133,206,228,172,211,172,150,117],"mode":"markers","text":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5"],"type":"scatter","name":"5","marker":{"color":"rgba(45,112,142,0.5)","line":{"color":"rgba(45,112,142,1)"}},"textfont":{"color":"rgba(45,112,142,0.5)"},"error_y":{"color":"rgba(45,112,142,0.5)"},"error_x":{"color":"rgba(45,112,142,0.5)"},"line":{"color":"rgba(45,112,142,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,28,56,111,67,67,72,61,44,83,122,128,139,144,144,172,139,111,106,133,144,150,144,106,106,106,106,133,144,167,56,122,117,111,89,117,72,133,133,122,144,133,144,161,200,217,133,161,200,167,144,156,150,122,117,139,161,200,172,217,11,33,106,100,100,117,56,44,56,56,100,128,117,133,183,194,150,144,156,167,94,106,150,128,128,122,139,167,167,172],"y":[183,139,183,117,194,206,217,233,250,239,256,256,294,294,317,294,283,283,267,322,261,228,256,228,239,267,289,300,306,306,178,178,200,167,183,206,222,244,244,244,250,233,261,300,322,311,256,272,250,344,244,211,261,211,233,267,289,306,294,317,133,189,167,156,128,178,194,222,222,233,250,156,239,283,317,317,278,256,250,322,222,211,228,172,211,272,278,278,250,272],"mode":"markers","text":["6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6"],"type":"scatter","name":"6","marker":{"color":"rgba(37,133,142,0.5)","line":{"color":"rgba(37,133,142,1)"}},"textfont":{"color":"rgba(37,133,142,0.5)"},"error_y":{"color":"rgba(37,133,142,0.5)"},"error_x":{"color":"rgba(37,133,142,0.5)"},"line":{"color":"rgba(37,133,142,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[183,72,61,67,117,83,72,78,128,122,133,100,94,106,122,100,100,161,128,128,117,111,139,178,194,161,56,56,56,167,156,222,78,100,100,133,106,133,167,178,183,139,144,139,144,156,122,161,144,156,167,183,211,194,239,200,94,94,156,156,156,183,78,89,89,133,100,111,122,133,144,133,122,128,133,94,100,139,111,122,156,128,167,167,189,156,139,56,72,106,128,111],"y":[311,311,194,222,261,261,217,272,267,300,294,233,228,211,183,261,283,250,283,278,289,306,322,322,328,328,228,256,222,222,233,317,256,200,222,261,244,217,272,261,306,294,228,217,233,233,278,289,233,278,289,289,294,283,350,333,211,228,261,250,239,289,222,178,200,250,217,183,250,217,267,250,200,183,206,189,244,250,256,272,278,283,283,294,317,306,261,211,228,244,261,272],"mode":"markers","text":["7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7"],"type":"scatter","name":"7","marker":{"color":"rgba(30,155,138,0.5)","line":{"color":"rgba(30,155,138,1)"}},"textfont":{"color":"rgba(30,155,138,0.5)"},"error_y":{"color":"rgba(30,155,138,0.5)"},"error_x":{"color":"rgba(30,155,138,0.5)"},"line":{"color":"rgba(30,155,138,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[144,139,144,183,128,128,128,156,189,161,117,183,150,144,89,89,106,128,128,150,144,100,100,122,156,117,117,128,111,100,94,161,206,239,189,139,178,228,228,250,250,156,178,178,161,106,167,206,172,178,172,178,161,156,178,89,139,183,144,156,133,172,117,133,189,161,128,156,156,189,189,206,122,128,167,122,78,89,172,178,139,156,156,161,111,128,72,94,156,122,117,78,89],"y":[278,306,311,283,294,322,333,344,356,361,306,261,317,317,261,317,272,272,272,278,278,261,272,194,272,267,272,261,256,239,267,294,317,344,306,289,317,350,344,367,383,306,294,267,306,261,317,283,250,267,261,261,267,278,244,250,289,306,272,250,228,289,289,306,311,300,300,306,317,317,322,339,278,283,256,283,256,272,283,256,244,283,283,233,250,261,228,267,278,233,228,211,261],"mode":"markers","text":["8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8"],"type":"scatter","name":"8","marker":{"color":"rgba(43,176,127,0.5)","line":{"color":"rgba(43,176,127,1)"}},"textfont":{"color":"rgba(43,176,127,0.5)"},"error_y":{"color":"rgba(43,176,127,0.5)"},"error_x":{"color":"rgba(43,176,127,0.5)"},"line":{"color":"rgba(43,176,127,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[144,56,61,67,122,61,61,83,78,156,83,72,67,78,78,61,6,83,67,67,106,100,72,72,83,44,50,72,72,17,122,72,117,167,117,78,128,194,217,211,133,106,156,100,83,67,72,111,128,150,144,144,111,144,133,78,78,56,67,33,94,61,72,111,83,61,78,106,172,172,128,72,72,61,6,17,44,44,50,72,133,133,122,106,128,44,44,67,28,-6],"y":[283,183,211,256,250,206,250,306,300,300,239,228,256,228,150,189,217,228,233,239,200,239,239,228,206,144,117,150,161,167,289,183,222,272,250,200,267,306,317,311,239,239,267,222,167,189,217,244,228,250,222,250,217,239,217,144,144,139,139,172,267,161,200,250,233,189,233,289,300,294,233,206,233,189,167,156,194,222,194,250,183,233,217,222,244,172,133,117,122,167],"mode":"markers","text":["9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"type":"scatter","name":"9","marker":{"color":"rgba(81,196,106,0.5)","line":{"color":"rgba(81,196,106,1)"}},"textfont":{"color":"rgba(81,196,106,0.5)"},"error_y":{"color":"rgba(81,196,106,0.5)"},"error_x":{"color":"rgba(81,196,106,0.5)"},"line":{"color":"rgba(81,196,106,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[6,6,50,50,61,67,0,-33,-44,-39,22,22,89,50,11,6,-33,-39,-11,17,67,56,56,89,50,22,0,-61,-61,11,44,111,133,156,117,61,28,6,-6,56,122,128,133,150,83,67,56,17,28,72,72,72,72,72,72,61,22,22,6,39,0,-11,17,83,100,94,67,17,-17,-28,-28,78,78,128,144,89,39,39,-17,-6,33,61,39,17,50,133,28,-6,-17,-17,0,-44],"y":[161,211,239,261,250,244,133,94,94,172,222,239,256,194,172,178,72,122,183,183,233,133,206,183,178,78,78,72,183,100,178,211,244,272,272,183,139,89,94,183,222,250,189,256,211,150,167,72,122,189,178,233,233,233,233,150,61,56,56,150,150,156,194,200,250,206,156,122,78,83,144,217,233,200,244,211,150,172,67,78,167,150,167,167,172,167,178,78,39,56,100,67],"mode":"markers","text":["10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10"],"type":"scatter","name":"10","marker":{"color":"rgba(133,213,74,0.5)","line":{"color":"rgba(133,213,74,1)"}},"textfont":{"color":"rgba(133,213,74,0.5)"},"error_y":{"color":"rgba(133,213,74,0.5)"},"error_x":{"color":"rgba(133,213,74,0.5)"},"line":{"color":"rgba(133,213,74,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[6,6,50,11,33,22,-22,17,22,-72,-67,-67,0,28,-33,-50,-50,-17,-56,-56,-44,56,17,22,33,50,56,133,78,28,22,17,28,22,17,0,11,-22,-17,44,100,133,-17,0,50,11,-17,17,33,61,83,83,50,50,28,56,-22,67,56,50,-17,-6,-6,-44,-39,-17,0,-22,-61,-22,39,89,-56,-56,-6,0,-33,-17,0,33,50,72,50,6,-6,28],"y":[100,200,228,183,183,44,111,150,200,83,83,139,178,172,183,117,178,189,122,150,161,167,122,100,122,128,133,206,217,133,167,50,111,128,206,61,133,28,61,150,161,178,150,106,183,206,50,78,111,156,167,167,83,122,72,139,67,194,206,122,139,44,89,89,111,28,78,17,22,111,117,144,133,78,156,172,33,50,89,122,144,156,83,100,39,83],"mode":"markers","text":["11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11"],"type":"scatter","name":"11","marker":{"color":"rgba(194,223,35,0.5)","line":{"color":"rgba(194,223,35,1)"}},"textfont":{"color":"rgba(194,223,35,0.5)"},"error_y":{"color":"rgba(194,223,35,0.5)"},"error_x":{"color":"rgba(194,223,35,0.5)"},"line":{"color":"rgba(194,223,35,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[72,50,-44,-50,-28,72,0,-39,-33,-44,-61,67,0,-61,-61,11,22,-28,-11,-56,-44,-39,-78,-117,-122,-128,-111,-83,-83,178,61,0,28,33,122,28,-33,-11,-17,-17,0,44,61,0,-28,33,17,6,0,-22,-44,-44,-6,-39,-89,-89,-61,-72,28,28,-22,-22,-6,100,-33,-83,-78,-56,-50,-61,-44,39,-28,-94,-89,-28,-33,-6,-39,-89,-117,-33,-56,-56,-94,-94,-78,-111,-72],"y":[172,117,117,150,172,206,167,117,17,39,83,117,106,106,17,33,44,83,17,17,33,61,39,11,-6,-33,-6,-6,-28,178,106,100,167,156,222,133,94,22,39,67,83,89,133,61,11,44,50,44,78,28,22,39,67,28,17,17,11,-17,144,94,94,128,128,194,183,72,-6,11,50,67,56,111,44,-28,-6,6,17,28,22,-33,-28,22,22,-11,-39,-44,-22,-33,-44],"mode":"markers","text":["12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12"],"type":"scatter","name":"12","marker":{"color":"rgba(253,231,37,0.5)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,0.5)"},"error_y":{"color":"rgba(253,231,37,0.5)"},"error_x":{"color":"rgba(253,231,37,0.5)"},"line":{"color":"rgba(253,231,37,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="column-1" class="section level2" data-width="350">
+<h2>Column</h2>
+<div id="boxplot" class="section level3">
+<h3>boxplot</h3>
+<p>In this boxplot, we will look into the distribution of tmax across
+months.</p>
+<pre class="r"><code>boxplot = 
   weather_df |&gt; 
-  plot_ly(x = ~month, y = ~tmax, type = "box", color = ~month,colors = "viridis") %&gt;%
+  plot_ly(x = ~month, y = ~tmax, type = &quot;box&quot;, color = ~month,colors = &quot;viridis&quot;) %&gt;%
   layout(
-    title = "distribution of tmax across months",
-    xaxis = list(title = "month"),
-    yaxis = list(title = "tmax")
+    title = &quot;distribution of tmax across months&quot;,
+    xaxis = list(title = &quot;month&quot;),
+    yaxis = list(title = &quot;tmax&quot;)
   )
 
-boxplot
-```
-
-### barplot
-In this boxplot, we will compare the total precipitation across months.
-```{r}
-barplot = 
+boxplot</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-d9e3020aeb47c605c566" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d9e3020aeb47c605c566">{"x":{"visdat":{"b34291960a5":["function () ","plotlyVisDat"]},"cur_data":"b34291960a5","attrs":{"b34291960a5":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"distribution of tmax across months","xaxis":{"domain":[0,1],"automargin":true,"title":"month","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6","7","8","9","10","11","12"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"tmax"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(68,1,84,0.5)","x":["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"],"y":[-56,-11,-50,0,0,-11,-11,11,17,-28,28,28,44,44,17,33,17,-6,-6,11,39,33,-28,6,22,-11,-67,-22,0,33,-50,-6,-28,44,72,-72,-100,-39,-28,-28,-33,-6,-17,0,-50,0,6,-56,22,22,17,17,-56,-22,-11,-83,-44,-28,6,6,-89,-28,-22,-44,6,33],"type":"box","name":"1","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(72,33,115,0.5)","x":["2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2"],"y":[44,39,44,-28,28,39,33,22,67,156,6,-44,28,83,67,11,11,-39,22,39,139,-28,-61,22,11,56,33,28,33,33,39,17,17,89,161,-72,22,61,72,-17,-6,22,100,28,-11,22,-83,-22,0,0,-11,6,78,-44,-122,-17,-6,22,-17,11,-83,-67,22,61,-83,-83,-28,-22,67,-11,-22],"type":"box","name":"2","marker":{"color":"rgba(72,33,115,1)","line":{"color":"rgba(72,33,115,1)"}},"line":{"color":"rgba(72,33,115,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(67,62,133,0.5)","x":["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],"y":[-6,33,-11,11,-11,50,56,28,33,39,67,78,56,78,28,11,33,22,106,72,28,100,100,11,-6,17,56,89,33,-78,-67,-39,-39,11,-33,-22,-6,17,6,-6,17,22,28,11,56,6,17,22,39,94,106,17,11,22,-28,-33,-11,6,56,11],"type":"box","name":"3","marker":{"color":"rgba(67,62,133,1)","line":{"color":"rgba(67,62,133,1)"}},"line":{"color":"rgba(67,62,133,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(56,89,140,0.5)","x":["4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],"y":[28,56,44,83,122,144,133,111,139,228,156,128,206,172,183,156,139,50,50,117,156,183,272,306,211,128,189,194,122,178,6,28,33,94,122,117,106,94,267,161,117,139,239,128,144,128,128,89,33,106,172,206,239,300,144,128,178,189,106,161,6,28,33,61,83,100,72,61,100,106,122,106,133,89,106,133,117,100,50,67,178,200,178,283,178,128,172,172,56,144],"type":"box","name":"4","marker":{"color":"rgba(56,89,140,1)","line":{"color":"rgba(56,89,140,1)"}},"line":{"color":"rgba(56,89,140,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(45,112,142,0.5)","x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5"],"y":[256,294,294,311,306,194,206,211,228,228,256,289,233,144,161,194,228,122,144,250,233,144,228,217,233,194,233,167,150,189,156,228,294,283,300,300,172,178,217,217,244,261,283,139,144,161,183,211,150,194,217,233,167,206,206,217,217,178,211,167,167,167,228,278,272,278,278,156,206,217,250,228,239,278,144,139,172,206,183,178,200,239,228,178,133,206,228,172,211,172,150,117],"type":"box","name":"5","marker":{"color":"rgba(45,112,142,1)","line":{"color":"rgba(45,112,142,1)"}},"line":{"color":"rgba(45,112,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(37,133,142,0.5)","x":["6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6"],"y":[183,139,183,117,194,206,217,233,250,239,256,256,294,294,317,294,283,283,267,322,261,228,256,228,239,267,289,300,306,306,178,178,200,167,183,206,222,244,244,244,250,233,261,300,322,311,256,272,250,344,244,211,261,211,233,267,289,306,294,317,133,189,167,156,128,178,194,222,222,233,250,156,239,283,317,317,278,256,250,322,222,211,228,172,211,272,278,278,250,272],"type":"box","name":"6","marker":{"color":"rgba(37,133,142,1)","line":{"color":"rgba(37,133,142,1)"}},"line":{"color":"rgba(37,133,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(30,155,138,0.5)","x":["7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7"],"y":[311,311,194,222,261,261,217,272,267,300,294,233,228,211,183,261,283,250,283,278,289,306,322,322,328,328,228,256,222,222,233,317,256,200,222,261,244,217,272,261,306,294,228,217,233,233,278,289,233,278,289,289,294,283,350,333,211,228,261,250,239,289,222,178,200,250,217,183,250,217,267,250,200,183,206,189,244,250,256,272,278,283,283,294,317,306,261,211,228,244,261,272],"type":"box","name":"7","marker":{"color":"rgba(30,155,138,1)","line":{"color":"rgba(30,155,138,1)"}},"line":{"color":"rgba(30,155,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(43,176,127,0.5)","x":["8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8"],"y":[278,306,311,283,294,322,333,344,356,361,306,261,317,317,261,317,272,272,272,278,278,261,272,194,272,267,272,261,256,239,267,294,317,344,306,289,317,350,344,367,383,306,294,267,306,261,317,283,250,267,261,261,267,278,244,250,289,306,272,250,228,289,289,306,311,300,300,306,317,317,322,339,278,283,256,283,256,272,283,256,244,283,283,233,250,261,228,267,278,233,228,211,261],"type":"box","name":"8","marker":{"color":"rgba(43,176,127,1)","line":{"color":"rgba(43,176,127,1)"}},"line":{"color":"rgba(43,176,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(81,196,106,0.5)","x":["9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"y":[283,183,211,256,250,206,250,306,300,300,239,228,256,228,150,189,217,228,233,239,200,239,239,228,206,144,117,150,161,167,289,183,222,272,250,200,267,306,317,311,239,239,267,222,167,189,217,244,228,250,222,250,217,239,217,144,144,139,139,172,267,161,200,250,233,189,233,289,300,294,233,206,233,189,167,156,194,222,194,250,183,233,217,222,244,172,133,117,122,167],"type":"box","name":"9","marker":{"color":"rgba(81,196,106,1)","line":{"color":"rgba(81,196,106,1)"}},"line":{"color":"rgba(81,196,106,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(133,213,74,0.5)","x":["10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10","10"],"y":[161,211,239,261,250,244,133,94,94,172,222,239,256,194,172,178,72,122,183,183,233,133,206,183,178,78,78,72,183,100,178,211,244,272,272,183,139,89,94,183,222,250,189,256,211,150,167,72,122,189,178,233,233,233,233,150,61,56,56,150,150,156,194,200,250,206,156,122,78,83,144,217,233,200,244,211,150,172,67,78,167,150,167,167,172,167,178,78,39,56,100,67],"type":"box","name":"10","marker":{"color":"rgba(133,213,74,1)","line":{"color":"rgba(133,213,74,1)"}},"line":{"color":"rgba(133,213,74,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(194,223,35,0.5)","x":["11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11","11"],"y":[100,200,228,183,183,44,111,150,200,83,83,139,178,172,183,117,178,189,122,150,161,167,122,100,122,128,133,206,217,133,167,50,111,128,206,61,133,28,61,150,161,178,150,106,183,206,50,78,111,156,167,167,83,122,72,139,67,194,206,122,139,44,89,89,111,28,78,17,22,111,117,144,133,78,156,172,33,50,89,122,144,156,83,100,39,83],"type":"box","name":"11","marker":{"color":"rgba(194,223,35,1)","line":{"color":"rgba(194,223,35,1)"}},"line":{"color":"rgba(194,223,35,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(253,231,37,0.5)","x":["12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12"],"y":[172,117,117,150,172,206,167,117,17,39,83,117,106,106,17,33,44,83,17,17,33,61,39,11,-6,-33,-6,-6,-28,178,106,100,167,156,222,133,94,22,39,67,83,89,133,61,11,44,50,44,78,28,22,39,67,28,17,17,11,-17,144,94,94,128,128,194,183,72,-6,11,50,67,56,111,44,-28,-6,6,17,28,22,-33,-28,22,22,-11,-39,-44,-22,-33,-44],"type":"box","name":"12","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="barplot" class="section level3">
+<h3>barplot</h3>
+<p>In this boxplot, we will compare the total precipitation across
+months.</p>
+<pre class="r"><code>barplot = 
   weather_df |&gt; 
   group_by(month) |&gt; 
   summarize(sum_prcp = sum(prcp)) |&gt; 
-  plot_ly(x = ~month, y = ~sum_prcp, color = ~month, type = "bar", colors = "viridis") |&gt; 
+  plot_ly(x = ~month, y = ~sum_prcp, color = ~month, type = &quot;bar&quot;, colors = &quot;viridis&quot;) |&gt; 
   layout(
-    title = "total precipitation across months",
-    xaxis = list(title = "month"),
-    yaxis = list(title = "total precipitation")
+    title = &quot;total precipitation across months&quot;,
+    xaxis = list(title = &quot;month&quot;),
+    yaxis = list(title = &quot;total precipitation&quot;)
   )
 
-barplot
-
-```
-</code></pre>
+barplot</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-169824d73f8f6a585037" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-169824d73f8f6a585037">{"x":{"visdat":{"b34451b1232":["function () ","plotlyVisDat"]},"cur_data":"b34451b1232","attrs":{"b34451b1232":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"total precipitation across months","xaxis":{"domain":[0,1],"automargin":true,"title":"month","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6","7","8","9","10","11","12"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"total precipitation"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["1"],"y":[484],"type":"bar","name":"1","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,1)"},"error_y":{"color":"rgba(68,1,84,1)"},"error_x":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2"],"y":[1150],"type":"bar","name":"2","marker":{"color":"rgba(72,33,115,1)","line":{"color":"rgba(72,33,115,1)"}},"textfont":{"color":"rgba(72,33,115,1)"},"error_y":{"color":"rgba(72,33,115,1)"},"error_x":{"color":"rgba(72,33,115,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["3"],"y":[1785],"type":"bar","name":"3","marker":{"color":"rgba(67,62,133,1)","line":{"color":"rgba(67,62,133,1)"}},"textfont":{"color":"rgba(67,62,133,1)"},"error_y":{"color":"rgba(67,62,133,1)"},"error_x":{"color":"rgba(67,62,133,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["4"],"y":[958],"type":"bar","name":"4","marker":{"color":"rgba(56,89,140,1)","line":{"color":"rgba(56,89,140,1)"}},"textfont":{"color":"rgba(56,89,140,1)"},"error_y":{"color":"rgba(56,89,140,1)"},"error_x":{"color":"rgba(56,89,140,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["5"],"y":[1955],"type":"bar","name":"5","marker":{"color":"rgba(45,112,142,1)","line":{"color":"rgba(45,112,142,1)"}},"textfont":{"color":"rgba(45,112,142,1)"},"error_y":{"color":"rgba(45,112,142,1)"},"error_x":{"color":"rgba(45,112,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["6"],"y":[2172],"type":"bar","name":"6","marker":{"color":"rgba(37,133,142,1)","line":{"color":"rgba(37,133,142,1)"}},"textfont":{"color":"rgba(37,133,142,1)"},"error_y":{"color":"rgba(37,133,142,1)"},"error_x":{"color":"rgba(37,133,142,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["7"],"y":[1304],"type":"bar","name":"7","marker":{"color":"rgba(30,155,138,1)","line":{"color":"rgba(30,155,138,1)"}},"textfont":{"color":"rgba(30,155,138,1)"},"error_y":{"color":"rgba(30,155,138,1)"},"error_x":{"color":"rgba(30,155,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["8"],"y":[2066],"type":"bar","name":"8","marker":{"color":"rgba(43,176,127,1)","line":{"color":"rgba(43,176,127,1)"}},"textfont":{"color":"rgba(43,176,127,1)"},"error_y":{"color":"rgba(43,176,127,1)"},"error_x":{"color":"rgba(43,176,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["9"],"y":[3744],"type":"bar","name":"9","marker":{"color":"rgba(81,196,106,1)","line":{"color":"rgba(81,196,106,1)"}},"textfont":{"color":"rgba(81,196,106,1)"},"error_y":{"color":"rgba(81,196,106,1)"},"error_x":{"color":"rgba(81,196,106,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["10"],"y":[1971],"type":"bar","name":"10","marker":{"color":"rgba(133,213,74,1)","line":{"color":"rgba(133,213,74,1)"}},"textfont":{"color":"rgba(133,213,74,1)"},"error_y":{"color":"rgba(133,213,74,1)"},"error_x":{"color":"rgba(133,213,74,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["11"],"y":[1759],"type":"bar","name":"11","marker":{"color":"rgba(194,223,35,1)","line":{"color":"rgba(194,223,35,1)"}},"textfont":{"color":"rgba(194,223,35,1)"},"error_y":{"color":"rgba(194,223,35,1)"},"error_x":{"color":"rgba(194,223,35,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["12"],"y":[2321],"type":"bar","name":"12","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,1)"},"error_y":{"color":"rgba(253,231,37,1)"},"error_x":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<script type="text/javascript">
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
 $(document).ready(function () {
-  FlexDashboard.init({
-    fillPage: true,
-    orientation: "columns",
-    storyboard: false,
-    defaultFigWidth: 576,
-    defaultFigHeight: 460,
-    defaultFigWidthMobile: 360,
-    defaultFigHeightMobile: 460,
-    resize_reload: true
-  });
-  var navbar = $(".navbar").first();
-  var body = $("body").first();
-  var sidebar = $(".section.sidebar").first();
-  function addNavbarPadding() {
-    var navHeight = navbar.outerHeight();
-    body.css("padding-top", (navHeight + 8) + "px");
-    sidebar.css("top", navHeight + "px");
-    var resizeEvent = window.document.createEvent("UIEvents");
-    resizeEvent.initUIEvent("resize", true, false, window, 0);
-    window.dispatchEvent(resizeEvent);
-  }
-  if (!window.Shiny) setTimeout(addNavbarPadding, 100);
-  $(document).on("shiny:idle", function() {
-    setTimeout(addNavbarPadding, 50);
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
 </script>
 
 </body>
