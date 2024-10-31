@@ -1,0 +1,88 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(flexdashboard)
+library(plotly)
+library(p8105.datasets)
+data("ny_noaa")
+```
+## Column {data-width="650"}
+
+Below we clean the data, creating separate variables for year, month, and day and converting `tmax` and `tmin` to numeric. We will work on observations in 2001 without NAs.
+```{r}
+weather_df = 
+  ny_noaa %>% 
+  na.omit() |> 
+  separate(date, into = c("year", "month", "day"), convert = TRUE) %>% 
+  mutate(
+    month = factor(month, levels = 1:12),
+    tmax = as.numeric(tmax),
+    tmin = as.numeric(tmin)) |> 
+  filter(year == 2001)
+```
+
+### Scatterplots
+
+In this scatterplot, we will look into the relation between tmax and tmin across months.
+```{r}
+scatterplot = 
+  weather_df |> 
+  plot_ly(x = ~tmin,
+    y = ~tmax,
+    color = ~month,
+    type = "scatter",
+    mode = "markers",
+    colors = "viridis",
+    text = ~month, alpha = 0.3) |> 
+  layout(
+    title = "tmax vs tmin across months",
+    xaxis = list(title = "tmin"),
+    yaxis = list(title = "tmax")
+  )
+
+scatterplot
+
+```
+
+## Column {data-width="350"}
+
+### boxplot
+In this boxplot, we will look into the distribution of tmax across months.
+```{r}
+boxplot = 
+  weather_df |> 
+  plot_ly(x = ~month, y = ~tmax, type = "box", color = ~month,colors = "viridis") %>%
+  layout(
+    title = "distribution of tmax across months",
+    xaxis = list(title = "month"),
+    yaxis = list(title = "tmax")
+  )
+
+boxplot
+```
+
+### barplot
+In this boxplot, we will compare the total precipitation across months.
+```{r}
+barplot = 
+  weather_df |> 
+  group_by(month) |> 
+  summarize(sum_prcp = sum(prcp)) |> 
+  plot_ly(x = ~month, y = ~sum_prcp, color = ~month, type = "bar", colors = "viridis") |> 
+  layout(
+    title = "total precipitation across months",
+    xaxis = list(title = "month"),
+    yaxis = list(title = "total precipitation")
+  )
+
+barplot
+
+```

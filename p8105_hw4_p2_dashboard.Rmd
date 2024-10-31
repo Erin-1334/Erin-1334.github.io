@@ -1,0 +1,108 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+data("ny_noaa")
+```
+
+In this project, we worked on `ny_noaa` dataset without NAs and work on ids having observation greater than 10800.
+
+## Column {data-width="650"}
+
+```{r}
+ny = ny_noaa |> 
+  na.omit() |>
+  group_by(id) |>
+  mutate(n = n()) |>
+  filter(n > 10800) |>
+  separate(date, into = c("year", "month", "day"), sep = "-") |> 
+  mutate(date = paste0(year, '-', month)) |> 
+  group_by(id,date,year,month) |> 
+  summarise(mean_prcp = mean(prcp,na.rm = T), mean_snow = mean(snow,na.rm = T), mean_snwd = mean(snwd,na.rm = T), mean_tmax = mean(as.numeric(tmax),na.rm = T), mean_tmin = mean(as.numeric(tmin),na.rm = T))
+```
+
+### Chart A
+
+```{r}
+# We want to find out the relation between the precipitation with tmax and tmin
+ny_scat = ny |> 
+  plot_ly(x = ~mean_tmin,
+    y = ~mean_tmax,
+    color = ~mean_prcp,
+    type = "scatter",
+    colors = "viridis",
+    text = ~mean_prcp, alpha = 0.3) |> 
+  layout(
+    title = "Scatter plot for mean_tmax vs mean_tmin",
+    xaxis = list(title = "mean_tmin"),
+    yaxis = list(title = "mean_tmax")
+  )
+
+ny_scat
+
+# Comment: We could observe that when the tmax and tmin increase, mean precipitation have higher probabilities to be larger.
+```
+
+## Column {data-width="350"}
+
+### Chart B
+
+```{r}
+# We want to study the distribution of snow fall among different id
+
+# Reorder 'id' factor
+ny_sorted = ny |> 
+  group_by(id) |> 
+  summarize(mean_snow = mean(mean_snow)) |> 
+  arrange(mean_snow) |> 
+  pull(id)
+
+# Create the box plot
+ny_box = ny |> 
+  mutate(id = factor(id, levels = ny_sorted)) |> 
+  plot_ly(x = ~id, y = ~mean_snow, color = ~id, type = "box", colors = "viridis") |> 
+  layout(
+    title = "Box plot for average snowfall",
+    xaxis = list(title = "ID"),
+    yaxis = list(title = "Average snowfall (mm)")
+  )
+
+ny_box
+
+# Comment: We could observe that USC00306314 has the largest spread and largest mean while USW0094789 has the smallest spread and smallest mean. The difference may be because of the location of these ID.
+```
+
+### Chart C
+
+```{r}
+# We want to study the total study snow depth among each id.
+ny_sum = ny |> 
+  group_by(id) %>%
+  summarize(sum_snwd = sum(mean_snwd)) |> 
+  arrange(sum_snwd)
+
+ny_sum_sorted = ny_sum |>  
+  mutate(id = fct_reorder(id,sum_snwd))
+
+ny_bar = ny_sum_sorted |> 
+  plot_ly(x = ~id, y = ~sum_snwd, color = ~id, type = "bar", colors = "viridis") |> 
+  layout(
+    title = "Bar plot for total snow depth",
+    xaxis = list(title = "ID"),
+    yaxis = list(title = "Total snow depth (mm)")
+  )
+
+ny_bar
+
+# We could conclude that USC00306314 has the largest snow depth while USW0094789 has the smallest snow depth. This meets the observation in the box plot.
+```

@@ -1,0 +1,17 @@
+---
+title: "Erin's website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Introduction
+I'm currently a first-year master student in Biostatistics at Columbia University Mailman School of Public Health.
+
+
+# More
+If you want to learn more about me, you can navigate to my resume or find my contact information on navigation site. Or you could go through my work on this assignment where I built dashboards with plotly. Here're some useful links for you:
+<p></p>
+* [Resume](about.html)
+* [Dashboard](dashboard.html)
