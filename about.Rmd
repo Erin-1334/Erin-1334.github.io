@@ -7,3 +7,6 @@ output:
 ---
 
 
+* I hold a bachelor's degree in medicine.
+* I have an internship at IQVIA, during which I conducted desk research on DTx and became interested in the intersection of health and data science.
+* Currently, i'm working on a project analyzing the wearable device data from a phase 2 trial to assess the treatment effect of NT for TK2.

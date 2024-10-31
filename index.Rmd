@@ -5,13 +5,13 @@ output:
     toc: true
     toc_float: true
 ---
-
+<div style="text-align: center;">
+  <p><strong><font size = '4.5'>Welcome to Erin's website!</strong></p>
+  <img src="20241030205411.jpg" style="width:45%;" />
+</div>
 # Introduction
 I'm currently a first-year master student in Biostatistics at Columbia University Mailman School of Public Health.
 
 
 # More
-If you want to learn more about me, you can navigate to my resume or find my contact information on navigation site. Or you could go through my work on this assignment where I built dashboards with plotly. Here're some useful links for you:
-<p></p>
-* [Resume](about.html)
-* [Dashboard](dashboard.html)
+If you want to learn more about me, you can navigate to [More about me](about.html) or find my contact information on navigation site. Or you could go through my work on hw4 problem 2 on this [dashboard](dashboard.html) . 
