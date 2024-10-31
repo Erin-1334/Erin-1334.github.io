@@ -28,7 +28,8 @@ weather_df =
     year == 2001,
     id %in% c("USC00300023", "USC00301152", "USC00304912"))
 ```
-## Column {data-width="650"}
+
+Column {data-width="650"}
 ### Scatterplots
 
 In this scatterplot, we will look into the relation between tmax and tmin across months.
@@ -52,7 +53,7 @@ scatterplot
 
 ```
 
-## Column {data-width="350"}
+Column {data-width="350"}
 
 ### boxplot
 In this boxplot, we will look into the distribution of tmax across months.
