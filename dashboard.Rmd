@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    source: embed
 ---
 
 ```{r setup, include=FALSE}
@@ -14,6 +15,8 @@ library(p8105.datasets)
 data("ny_noaa")
 ```
 
+
+## Column {data-width="650"}
 
 ```{r}
 weather_df = 
@@ -29,8 +32,7 @@ weather_df =
     id %in% c("USC00300023", "USC00301152", "USC00304912"))
 ```
 
-Column {data-width=650}
---------------------------------------------
+
 
 ### Scatterplots
 
@@ -56,8 +58,7 @@ scatterplot
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------
+## Column {data-width="350"}
 
 ### boxplot
 In this boxplot, we will look into the distribution of tmax across months.
