@@ -14,4 +14,4 @@ I'm currently a first-year master student in Biostatistics at Columbia Universit
 
 
 # More
-If you want to learn more about me, you can navigate to [More about me](about.html) or find my contact information on navigation site. Or you could go through my work on hw4 problem 2 on this [dashboard](dashboard.html) . 
+If you want to learn more about me, you can navigate to [More about me](about.html) or find my contact information on navigation site. You can go through my work on hw4 problem 2 on this [dashboard](dashboard.html) . 
