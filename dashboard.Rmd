@@ -16,7 +16,7 @@ data("ny_noaa")
 ```
 ## Column {data-width="650"}
 
-We will work on observations with id "USC00300023", "USC00301152", and "USC00304912" in 2001 without NAs.
+We will work on observations from `ny_noaa` dataset with `id` "USC00300023", "USC00301152", and "USC00304912" in 2001 without NAs.
 ```{r}
 weather_df = 
   ny_noaa %>% 
